@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Circle of Fifths - analog watch face (Watch Face Format v2).
+
+  Layout (450x450 canvas, centre 225,225):
+    r 206-222  minute/hour ticks
+    r 203      outer ring
+    r 184      major keys   (C G D A E B F#/Gb Db Ab Eb Bb F)
+    r 165      middle ring
+    r 143      relative minors
+    r 120      inner ring
+    inside     date window (3 o'clock) and three complication slots (12, 9, 6 o'clock)
+
+  Theme colours, by index into the selected ColorOption:
+    0 major keys   1 minor keys / secondary text   2 accent (second hand, gauges)
+    3 hour+minute hands   4 rings, ticks and spokes
+-->
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+  <Metadata key="CLOCK_TYPE" value="ANALOG"/>
+  <Metadata key="PREVIEW_TIME" value="10:08:32"/>
+
+  <UserConfigurations>
+    <ColorConfiguration id="themeColor" displayName="theme_label" screenReaderText="theme_label" defaultValue="0">
+      <ColorOption id="0" displayName="theme_classic" colors="#ffffff #9aa0a6 #e53935 #ffffff #5f6368"/>
+      <ColorOption id="1" displayName="theme_ivory"   colors="#f5ead6 #b7a883 #c62828 #f5ead6 #6b604a"/>
+      <ColorOption id="2" displayName="theme_gold"    colors="#e8c46a #a8853b #f5f5f5 #e8c46a #6b5a2a"/>
+      <ColorOption id="3" displayName="theme_ocean"   colors="#a9d6f5 #5b9bc4 #ffb703 #dbeefb #3d5f78"/>
+      <ColorOption id="4" displayName="theme_sage"    colors="#d5e2c4 #93a884 #e76f51 #e8f0dd #4f6146"/>
+      <ColorOption id="5" displayName="theme_mono"    colors="#ffffff #ffffff #ffffff #ffffff #808080"/>
+    </ColorConfiguration>
+  </UserConfigurations>
+
+  <Scene backgroundColor="#000000">
+
+    <!-- Rings, spokes and ticks. Dimmed in ambient mode. -->
+    <Group x="0" y="0" width="450" height="450" name="dial">
+      <Variant mode="AMBIENT" target="alpha" value="120"/>
+      <PartDraw x="0" y="0" width="450" height="450">
+        <Ellipse x="22" y="22" width="406" height="406"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5"/></Ellipse>
+        <Ellipse x="60" y="60" width="330" height="330"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1"/></Ellipse>
+        <Ellipse x="105" y="105" width="240" height="240"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5"/></Ellipse>
+        <Line startX="256.06" startY="109.09" endX="277.54" endY="28.92"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="309.85" startY="140.15" endX="368.54" endY="81.46"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="340.91" startY="193.94" endX="421.08" endY="172.46"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="340.91" startY="256.06" endX="421.08" endY="277.54"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="309.85" startY="309.85" endX="368.54" endY="368.54"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="256.06" startY="340.91" endX="277.54" endY="421.08"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="193.94" startY="340.91" endX="172.46" endY="421.08"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="140.15" startY="309.85" endX="81.46" endY="368.54"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="109.09" startY="256.06" endX="28.92" endY="277.54"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="109.09" startY="193.94" endX="28.92" endY="172.46"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="140.15" startY="140.15" endX="81.46" endY="81.46"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="193.94" startY="109.09" endX="172.46" endY="28.92"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1" cap="BUTT"/></Line>
+        <Line startX="225" startY="19" endX="225" endY="3"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="247.37" startY="12.17" endX="248.21" endY="4.22"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="269.49" startY="15.68" endX="271.16" endY="7.85"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="291.13" startY="21.47" endX="293.6" endY="13.87"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="312.04" startY="29.5" endX="315.3" endY="22.19"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="328" startY="46.6" endX="336" endY="32.74"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="350.79" startY="51.87" endX="355.49" endY="45.4"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="368.19" startY="65.97" endX="373.55" endY="60.02"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="384.03" startY="81.81" endX="389.98" endY="76.45"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="398.13" startY="99.21" endX="404.6" endY="94.51"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="403.4" startY="122" endX="417.26" endY="114"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="420.5" startY="137.96" endX="427.81" endY="134.7"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="428.53" startY="158.87" endX="436.13" endY="156.4"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="434.32" startY="180.51" endX="442.15" endY="178.84"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="437.83" startY="202.63" endX="445.78" endY="201.79"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="431" startY="225" endX="447" endY="225"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="437.83" startY="247.37" endX="445.78" endY="248.21"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="434.32" startY="269.49" endX="442.15" endY="271.16"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="428.53" startY="291.13" endX="436.13" endY="293.6"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="420.5" startY="312.04" endX="427.81" endY="315.3"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="403.4" startY="328" endX="417.26" endY="336"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="398.13" startY="350.79" endX="404.6" endY="355.49"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="384.03" startY="368.19" endX="389.98" endY="373.55"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="368.19" startY="384.03" endX="373.55" endY="389.98"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="350.79" startY="398.13" endX="355.49" endY="404.6"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="328" startY="403.4" endX="336" endY="417.26"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="312.04" startY="420.5" endX="315.3" endY="427.81"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="291.13" startY="428.53" endX="293.6" endY="436.13"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="269.49" startY="434.32" endX="271.16" endY="442.15"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="247.37" startY="437.83" endX="248.21" endY="445.78"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="225" startY="431" endX="225" endY="447"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="202.63" startY="437.83" endX="201.79" endY="445.78"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="180.51" startY="434.32" endX="178.84" endY="442.15"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="158.87" startY="428.53" endX="156.4" endY="436.13"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="137.96" startY="420.5" endX="134.7" endY="427.81"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="122" startY="403.4" endX="114" endY="417.26"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="99.21" startY="398.13" endX="94.51" endY="404.6"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="81.81" startY="384.03" endX="76.45" endY="389.98"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="65.97" startY="368.19" endX="60.02" endY="373.55"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="51.87" startY="350.79" endX="45.4" endY="355.49"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="46.6" startY="328" endX="32.74" endY="336"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="29.5" startY="312.04" endX="22.19" endY="315.3"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="21.47" startY="291.13" endX="13.87" endY="293.6"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="15.68" startY="269.49" endX="7.85" endY="271.16"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="12.17" startY="247.37" endX="4.22" endY="248.21"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="19" startY="225" endX="3" endY="225"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="12.17" startY="202.63" endX="4.22" endY="201.79"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="15.68" startY="180.51" endX="7.85" endY="178.84"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="21.47" startY="158.87" endX="13.87" endY="156.4"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="29.5" startY="137.96" endX="22.19" endY="134.7"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="46.6" startY="122" endX="32.74" endY="114"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="51.87" startY="99.21" endX="45.4" endY="94.51"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="65.97" startY="81.81" endX="60.02" endY="76.45"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="81.81" startY="65.97" endX="76.45" endY="60.02"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="99.21" startY="51.87" endX="94.51" endY="45.4"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="122" startY="46.6" endX="114" endY="32.74"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="BUTT"/></Line>
+        <Line startX="137.96" startY="29.5" endX="134.7" endY="22.19"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="158.87" startY="21.47" endX="156.4" endY="13.87"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="180.51" startY="15.68" endX="178.84" endY="7.85"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+        <Line startX="202.63" startY="12.17" endX="201.79" endY="4.22"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5" cap="BUTT"/></Line>
+      </PartDraw>
+    </Group>
+
+    <!-- Major keys (outer ring) -->
+    <Group x="0" y="0" width="450" height="450" name="major_keys">
+      <PartText x="180" y="23" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">C</Font></Text>
+      </PartText>
+      <PartText x="272" y="48" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">G</Font></Text>
+      </PartText>
+      <PartText x="339" y="115" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">D</Font></Text>
+      </PartText>
+      <PartText x="364" y="207" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">A</Font></Text>
+      </PartText>
+      <PartText x="339" y="299" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">E</Font></Text>
+      </PartText>
+      <PartText x="272" y="366" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">B</Font></Text>
+      </PartText>
+      <PartText x="180" y="391" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">F♯/G♭</Font></Text>
+      </PartText>
+      <PartText x="88" y="366" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">D♭</Font></Text>
+      </PartText>
+      <PartText x="21" y="299" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">A♭</Font></Text>
+      </PartText>
+      <PartText x="-4" y="207" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">E♭</Font></Text>
+      </PartText>
+      <PartText x="21" y="115" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">B♭</Font></Text>
+      </PartText>
+      <PartText x="88" y="48" width="90" height="36" tintColor="[CONFIGURATION.themeColor.0]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="#ffffff">F</Font></Text>
+      </PartText>
+    </Group>
+
+    <!-- Relative minors (inner ring) -->
+    <Group x="0" y="0" width="450" height="450" name="minor_keys">
+      <PartText x="190" y="68" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">a</Font></Text>
+      </PartText>
+      <PartText x="262" y="87" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">e</Font></Text>
+      </PartText>
+      <PartText x="314" y="140" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">b</Font></Text>
+      </PartText>
+      <PartText x="333" y="211" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">f♯</Font></Text>
+      </PartText>
+      <PartText x="314" y="282" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">c♯</Font></Text>
+      </PartText>
+      <PartText x="262" y="335" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">g♯</Font></Text>
+      </PartText>
+      <PartText x="190" y="354" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">d♯/e♭</Font></Text>
+      </PartText>
+      <PartText x="118" y="335" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">b♭</Font></Text>
+      </PartText>
+      <PartText x="66" y="283" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">f</Font></Text>
+      </PartText>
+      <PartText x="47" y="211" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">c</Font></Text>
+      </PartText>
+      <PartText x="66" y="140" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">g</Font></Text>
+      </PartText>
+      <PartText x="118" y="87" width="70" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="21" weight="MEDIUM" color="#ffffff">d</Font></Text>
+      </PartText>
+    </Group>
+
+    <!-- Date window at 3 o'clock -->
+    <Group x="0" y="0" width="450" height="450" name="date">
+      <PartDraw x="248" y="208" width="70" height="34">
+        <RoundRectangle x="1" y="1" width="68" height="32" cornerRadiusX="5" cornerRadiusY="5"><Stroke color="[CONFIGURATION.themeColor.4]" thickness="1.5"/></RoundRectangle>
+      </PartDraw>
+      <PartText x="250" y="210" width="66" height="30" tintColor="[CONFIGURATION.themeColor.1]">
+        <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="18" weight="MEDIUM" color="#ffffff"><Upper/><Template><![CDATA[%s %d]]><Parameter expression="[DAY_OF_WEEK_S]"/><Parameter expression="[DAY]"/></Template></Font></Text>
+      </PartText>
+    </Group>
+
+    <!-- Complication slots: 12, 9 and 6 o'clock -->
+    <ComplicationSlot x="193" y="115" width="64" height="64" slotId="0" name="top" displayName="slot_top" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
+      <DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="RANGED_VALUE"/>
+      <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="22" y="6" width="20" height="20" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="2" y="28" width="60" height="26" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="18" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="2" y="18" width="60" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="20" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <PartDraw x="0" y="0" width="64" height="64">
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="ROUND"/>
+          </Arc>
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.2]" thickness="3" cap="ROUND"/>
+            <Transform target="endAngle" value="-135 + ((clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])) * 270"/>
+          </Arc>
+        </PartDraw>
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="24" y="12" width="16" height="16" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="8" y="29" width="48" height="22" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="8" y="20" width="48" height="24" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="16" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="MONOCHROMATIC_IMAGE">
+        <PartImage x="16" y="16" width="32" height="32" tintColor="[CONFIGURATION.themeColor.1]">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+        </PartImage>
+      </Complication>
+      <Complication type="SMALL_IMAGE">
+        <PartImage x="12" y="12" width="40" height="40">
+          <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
+        </PartImage>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot x="115" y="193" width="64" height="64" slotId="1" name="left" displayName="slot_left" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
+      <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT"/>
+      <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="22" y="6" width="20" height="20" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="2" y="28" width="60" height="26" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="18" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="2" y="18" width="60" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="20" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <PartDraw x="0" y="0" width="64" height="64">
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="ROUND"/>
+          </Arc>
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.2]" thickness="3" cap="ROUND"/>
+            <Transform target="endAngle" value="-135 + ((clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])) * 270"/>
+          </Arc>
+        </PartDraw>
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="24" y="12" width="16" height="16" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="8" y="29" width="48" height="22" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="8" y="20" width="48" height="24" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="16" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="MONOCHROMATIC_IMAGE">
+        <PartImage x="16" y="16" width="32" height="32" tintColor="[CONFIGURATION.themeColor.1]">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+        </PartImage>
+      </Complication>
+      <Complication type="SMALL_IMAGE">
+        <PartImage x="12" y="12" width="40" height="40">
+          <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
+        </PartImage>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot x="193" y="271" width="64" height="64" slotId="2" name="bottom" displayName="slot_bottom" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
+      <DefaultProviderPolicy defaultSystemProvider="HEART_RATE" defaultSystemProviderType="SHORT_TEXT"/>
+      <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="22" y="6" width="20" height="20" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="2" y="28" width="60" height="26" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="18" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="2" y="18" width="60" height="28" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="20" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <PartDraw x="0" y="0" width="64" height="64">
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="ROUND"/>
+          </Arc>
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.2]" thickness="3" cap="ROUND"/>
+            <Transform target="endAngle" value="-135 + ((clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])) * 270"/>
+          </Arc>
+        </PartDraw>
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="24" y="12" width="16" height="16" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="8" y="29" width="48" height="22" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="15" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="8" y="20" width="48" height="24" tintColor="[CONFIGURATION.themeColor.1]">
+              <Text align="CENTER" ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="16" weight="MEDIUM" color="#ffffff"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="MONOCHROMATIC_IMAGE">
+        <PartImage x="16" y="16" width="32" height="32" tintColor="[CONFIGURATION.themeColor.1]">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+        </PartImage>
+      </Complication>
+      <Complication type="SMALL_IMAGE">
+        <PartImage x="12" y="12" width="40" height="40">
+          <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
+        </PartImage>
+      </Complication>
+    </ComplicationSlot>
+
+    <!-- Hands -->
+    <AnalogClock x="0" y="0" width="450" height="450">
+      <HourHand resource="hand_hour" x="218" y="85" width="14" height="160" pivotX="0.5" pivotY="0.875" tintColor="[CONFIGURATION.themeColor.3]"/>
+      <MinuteHand resource="hand_minute" x="220" y="25" width="10" height="225" pivotX="0.5" pivotY="0.8889" tintColor="[CONFIGURATION.themeColor.3]"/>
+      <SecondHand resource="hand_second" x="219" y="13" width="12" height="252" pivotX="0.5" pivotY="0.8413" tintColor="[CONFIGURATION.themeColor.2]">
+        <Variant mode="AMBIENT" target="alpha" value="0"/>
+        <Sweep frequency="SYNC_TO_DEVICE"/>
+      </SecondHand>
+    </AnalogClock>
+
+    <!-- Hub -->
+    <PartDraw x="213" y="213" width="24" height="24">
+      <Ellipse x="2" y="2" width="20" height="20"><Fill color="[CONFIGURATION.themeColor.3]"/></Ellipse>
+      <Ellipse x="9" y="9" width="6" height="6"><Fill color="#000000"/></Ellipse>
+    </PartDraw>
+
+  </Scene>
+</WatchFace>
