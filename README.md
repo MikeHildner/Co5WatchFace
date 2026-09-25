@@ -82,7 +82,16 @@ adb connect <ip>:<port>
 ```
 
 Then use the same `adb install` and `am broadcast` commands as for the
-emulator. Watch and PC must be on the same Wi-Fi network.
+emulator, adding `-s <ip>:<port>` if the emulator is also running.
+
+Tips learned on a Galaxy Watch8:
+
+- The watch drops Wi-Fi while the phone is connected over Bluetooth, and
+  newer One UI Watch has no "Wi-Fi always on" setting. Turn Bluetooth off on
+  the phone while you work, and keep the watch display awake.
+- The connect port changes every time wireless debugging restarts. Find the
+  current one with `adb mdns services` (look for `_adb-tls-connect`).
+- The watch does not answer ping, so test reachability with TCP or mDNS.
 
 ## Generator scripts
 
