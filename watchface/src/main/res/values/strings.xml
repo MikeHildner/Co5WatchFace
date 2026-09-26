@@ -13,6 +13,7 @@
 
     <!-- Inner ring mode picker -->
     <string name="inner_ring_label">Inner ring</string>
+    <string name="cycle_label">Cycle modes hourly</string>
     <string name="mode_aeolian">Aeolian</string>
     <string name="mode_dorian">Dorian</string>
     <string name="mode_phrygian">Phrygian</string>
@@ -27,4 +28,5 @@
     <!-- Complication slots -->
     <string name="slot_top">Top</string>
     <string name="slot_bottom">Bottom</string>
+    <string name="slot_left">Left</string>
 </resources>

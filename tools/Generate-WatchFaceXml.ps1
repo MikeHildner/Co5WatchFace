@@ -81,13 +81,14 @@ function LabelXml($spellings, [bool]$lower, [double]$size, $color) {
   ($spellings | ForEach-Object { SpellingXml $_ $lower $size $color }) -join "/"
 }
 
-function LabelPartText([int]$pos, [double]$r, [int]$w, [int]$h, [string]$family, [double]$size, $color, [string]$inner) {
+function LabelPartText([int]$pos, [double]$r, [int]$w, [int]$h, [string]$family, [double]$size, $color, [string]$inner, [string]$partExtra = "") {
   $a  = $pos * 30
   $cx = 225 + $r * [math]::Sin($a * [math]::PI / 180)
   $cy = 225 - $r * [math]::Cos($a * [math]::PI / 180)
   $x = [int][math]::Round($cx - $w / 2); $y = [int][math]::Round($cy - $h / 2)
+  $extraLine = if ($partExtra) { "`n$partExtra" } else { "" }
   return @"
-      <PartText x="$x" y="$y" width="$w" height="$h">
+      <PartText x="$x" y="$y" width="$w" height="$h">$extraLine
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="$family" size="$(F $size)" minSize="12" color="$color">$inner</Font></Text>
       </PartText>
 "@
@@ -102,23 +103,39 @@ for ($i = 0; $i -lt 12; $i++) {
 }
 
 # Inner ring: one Group per mode, swapped by the innerRing setting
-function ModeGroupXml($mode) {
+function ModeGroupXml($mode, [string]$suffix = "", [string]$partExtra = "") {
   $sb = New-Object System.Text.StringBuilder
-  [void]$sb.AppendLine("        <Group x=""0"" y=""0"" width=""450"" height=""450"" name=""inner_$($mode.id)"">")
+  [void]$sb.AppendLine("        <Group x=""0"" y=""0"" width=""450"" height=""450"" name=""inner_$($mode.id)$suffix"">")
   for ($i = 0; $i -lt 12; $i++) {
     $tonics = New-Object System.Collections.Generic.List[object]
     foreach ($sp in $OUTER[$i]) { $tonics.Add((ModeTonic $sp[0] $sp[1] $mode.degree)) }
     $size = if ($tonics.Count -gt 1) { 17 } else { 21 }
-    [void]$sb.Append((LabelPartText $i 143 76 28 $FONT_ITALIC $size $MINOR (LabelXml $tonics $mode.lower $size $MINOR)))
+    [void]$sb.Append((LabelPartText $i 143 76 28 $FONT_ITALIC $size $MINOR (LabelXml $tonics $mode.lower $size $MINOR) $partExtra))
   }
   # Mode name under the hub
   [void]$sb.AppendLine("      <PartText x=""165"" y=""247"" width=""120"" height=""18"">")
+  if ($partExtra) { [void]$sb.AppendLine($partExtra) }
   [void]$sb.AppendLine("        <Text align=""CENTER"" verticalAlign=""CENTER""><Font family=""$FONT_ITALIC"" size=""13"" color=""$MINOR"">mode_$($mode.id)</Font></Text>")
   [void]$sb.AppendLine("      </PartText>")
   [void]$sb.AppendLine("        </Group>")
   return $sb.ToString().TrimEnd()
 }
 $modeOptions = New-Object System.Text.StringBuilder
+
+# "Cycle modes hourly": the mode follows the hour of day in brightness order (each step adds a
+# flat), switching at the top of every hour. Stateless: hour mod 6 picks the mode, applied as an
+# alpha transform on every text element of each mode group.
+# This lives under a BooleanConfiguration, not a ListOption: on the Galaxy Watch anything inside a
+# ListOption is evaluated once at load (against the preview time) and never refreshed, whereas
+# content under a BooleanOption stays live (the key highlight relies on the same behaviour).
+$CYCLE_ORDER = @("lydian", "mixolydian", "dorian", "aeolian", "phrygian", "locrian")
+$cycleGroups = New-Object System.Text.StringBuilder
+for ($k = 0; $k -lt $CYCLE_ORDER.Count; $k++) {
+  $m = $MODES | Where-Object { $_.id -eq $CYCLE_ORDER[$k] }
+  $alpha = "        <Transform target=""alpha"" value=""255 * (1 - clamp(abs(([HOUR_0_23] % 6) - $k), 0, 1))""/>"
+  [void]$cycleGroups.AppendLine((ModeGroupXml $m "_cycle$k" $alpha))
+}
+
 foreach ($m in $MODES) {
   [void]$modeOptions.AppendLine("      <ListOption id=""$($m.id)"">")
   [void]$modeOptions.AppendLine((ModeGroupXml $m))
@@ -214,8 +231,11 @@ $(CompText 8 20 48 24 16 $MINOR)
 $batteryPolicy   = '<DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="RANGED_VALUE"/>'
 # Samsung's Stopwatch app on Galaxy Watch; tapping the slot opens it for start/pause/reset.
 $stopwatchPolicy = '<DefaultProviderPolicy primaryProvider="com.samsung.android.watch.stopwatch/com.samsung.android.watch.stopwatch.complications.StopwatchComplicationProviderService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>'
+# Samsung Weather on Galaxy Watch: condition icon plus current temperature.
+$weatherPolicy   = '<DefaultProviderPolicy primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.WeatherComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>'
 $slotTop    = Slot 0 "top"    "slot_top"    193 115 $batteryPolicy
 $slotBottom = Slot 3 "bottom" "slot_bottom" 193 271 $stopwatchPolicy
+$slotLeft   = Slot 4 "left"   "slot_left"   115 193 $weatherPolicy
 
 $xml = @"
 <?xml version="1.0" encoding="utf-8"?>
@@ -228,9 +248,9 @@ $xml = @"
     r 203      outer ring
     r 184      major keys, clockwise in FOURTHS: C F Bb Eb Ab Db/C# Gb/F# B/Cb E A D G
     r 165      middle ring
-    r 143      relative mode of each key (Aeolian by default; user-selectable)
+    r 143      relative mode of each key (cycles hourly by default; user-selectable)
     r 120      inner ring
-    inside     date window (3 o'clock), battery (12), stopwatch (6), mode name under the hub
+    inside     date window (3 o'clock), battery (12), stopwatch (6), weather (9), mode name under the hub
 
   Theme colours, by index into the selected ColorOption:
     0 major keys   1 inner ring / secondary text   2 accent (second hand, gauges, key highlight)
@@ -249,6 +269,7 @@ $xml = @"
       <ColorOption id="4" displayName="theme_sage"    colors="#d5e2c4 #93a884 #e76f51 #e8f0dd #4f6146"/>
       <ColorOption id="5" displayName="theme_mono"    colors="#ffffff #ffffff #ffffff #ffffff #808080"/>
     </ColorConfiguration>
+    <BooleanConfiguration id="cycleHourly" displayName="cycle_label" screenReaderText="cycle_label" defaultValue="TRUE"/>
     <ListConfiguration id="innerRing" displayName="inner_ring_label" screenReaderText="inner_ring_label" defaultValue="aeolian">
       <ListOption id="aeolian"    displayName="mode_aeolian"/>
       <ListOption id="dorian"     displayName="mode_dorian"/>
@@ -294,10 +315,21 @@ $($ticks.ToString().TrimEnd())
 $($majorXml.ToString().TrimEnd())
     </Group>
 
-    <!-- Inner ring: relative mode of each key, chosen in the editor -->
+    <!-- Inner ring: relative mode of each key. Cycles hourly by default; otherwise the chosen mode. -->
+    <BooleanConfiguration id="cycleHourly">
+      <BooleanOption id="TRUE">
+        <Group x="0" y="0" width="450" height="450" name="inner_cycle">
+$($cycleGroups.ToString().TrimEnd())
+        </Group>
+      </BooleanOption>
+      <BooleanOption id="FALSE">
+        <Group x="0" y="0" width="450" height="450" name="inner_fixed">
     <ListConfiguration id="innerRing">
 $($modeOptions.ToString().TrimEnd())
     </ListConfiguration>
+        </Group>
+      </BooleanOption>
+    </BooleanConfiguration>
 
     <!-- Date window at 3 o'clock -->
     <Group x="0" y="0" width="450" height="450" name="date">
@@ -309,9 +341,10 @@ $($modeOptions.ToString().TrimEnd())
       </PartText>
     </Group>
 
-    <!-- Complication slots: battery at 12, stopwatch at 6 -->
+    <!-- Complication slots: battery at 12, stopwatch at 6, weather at 9 -->
 $slotTop
 $slotBottom
+$slotLeft
 
     <!-- Hands -->
     <AnalogClock x="0" y="0" width="450" height="450">

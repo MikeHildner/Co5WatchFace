@@ -8,9 +8,9 @@
     r 203      outer ring
     r 184      major keys, clockwise in FOURTHS: C F Bb Eb Ab Db/C# Gb/F# B/Cb E A D G
     r 165      middle ring
-    r 143      relative mode of each key (Aeolian by default; user-selectable)
+    r 143      relative mode of each key (cycles hourly by default; user-selectable)
     r 120      inner ring
-    inside     date window (3 o'clock), battery (12), stopwatch (6), mode name under the hub
+    inside     date window (3 o'clock), battery (12), stopwatch (6), weather (9), mode name under the hub
 
   Theme colours, by index into the selected ColorOption:
     0 major keys   1 inner ring / secondary text   2 accent (second hand, gauges, key highlight)
@@ -29,6 +29,7 @@
       <ColorOption id="4" displayName="theme_sage"    colors="#d5e2c4 #93a884 #e76f51 #e8f0dd #4f6146"/>
       <ColorOption id="5" displayName="theme_mono"    colors="#ffffff #ffffff #ffffff #ffffff #808080"/>
     </ColorConfiguration>
+    <BooleanConfiguration id="cycleHourly" displayName="cycle_label" screenReaderText="cycle_label" defaultValue="TRUE"/>
     <ListConfiguration id="innerRing" displayName="inner_ring_label" screenReaderText="inner_ring_label" defaultValue="aeolian">
       <ListOption id="aeolian"    displayName="mode_aeolian"/>
       <ListOption id="dorian"     displayName="mode_dorian"/>
@@ -168,7 +169,266 @@
       </PartText>
     </Group>
 
-    <!-- Inner ring: relative mode of each key, chosen in the editor -->
+    <!-- Inner ring: relative mode of each key. Cycles hourly by default; otherwise the chosen mode. -->
+    <BooleanConfiguration id="cycleHourly">
+      <BooleanOption id="TRUE">
+        <Group x="0" y="0" width="450" height="450" name="inner_cycle">
+        <Group x="0" y="0" width="450" height="450" name="inner_lydian_cycle0">
+      <PartText x="187" y="68" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">F</Font></Text>
+      </PartText>      <PartText x="258" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">B<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="311" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">E<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="330" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">A<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="311" y="282" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">D<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="258" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">G<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/F<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="187" y="354" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">C<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/B</Font></Text>
+      </PartText>      <PartText x="116" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">E/F<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="283" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">A</Font></Text>
+      </PartText>      <PartText x="44" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">D</Font></Text>
+      </PartText>      <PartText x="63" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">G</Font></Text>
+      </PartText>      <PartText x="115" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">C</Font></Text>
+      </PartText>      <PartText x="165" y="247" width="120" height="18">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER"><Font family="libre_baskerville_italic" size="13" color="[CONFIGURATION.themeColor.1]">mode_lydian</Font></Text>
+      </PartText>
+        </Group>
+        <Group x="0" y="0" width="450" height="450" name="inner_mixolydian_cycle1">
+      <PartText x="187" y="68" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">G</Font></Text>
+      </PartText>      <PartText x="258" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">C</Font></Text>
+      </PartText>      <PartText x="311" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">F</Font></Text>
+      </PartText>      <PartText x="330" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">B<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="311" y="282" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">E<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="258" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">A<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/G<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="187" y="354" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">D<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/C<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="116" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">F<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/G<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="283" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">B</Font></Text>
+      </PartText>      <PartText x="44" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">E</Font></Text>
+      </PartText>      <PartText x="63" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">A</Font></Text>
+      </PartText>      <PartText x="115" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">D</Font></Text>
+      </PartText>      <PartText x="165" y="247" width="120" height="18">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER"><Font family="libre_baskerville_italic" size="13" color="[CONFIGURATION.themeColor.1]">mode_mixolydian</Font></Text>
+      </PartText>
+        </Group>
+        <Group x="0" y="0" width="450" height="450" name="inner_dorian_cycle2">
+      <PartText x="187" y="68" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
+      </PartText>      <PartText x="258" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
+      </PartText>      <PartText x="311" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c</Font></Text>
+      </PartText>      <PartText x="330" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f</Font></Text>
+      </PartText>      <PartText x="311" y="282" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="258" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">e<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/d<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="187" y="354" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">a<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/g<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="116" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/d<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="283" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="44" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
+      </PartText>      <PartText x="63" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
+      </PartText>      <PartText x="115" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
+      </PartText>      <PartText x="165" y="247" width="120" height="18">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER"><Font family="libre_baskerville_italic" size="13" color="[CONFIGURATION.themeColor.1]">mode_dorian</Font></Text>
+      </PartText>
+        </Group>
+        <Group x="0" y="0" width="450" height="450" name="inner_aeolian_cycle3">
+      <PartText x="187" y="68" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
+      </PartText>      <PartText x="258" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
+      </PartText>      <PartText x="311" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
+      </PartText>      <PartText x="330" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c</Font></Text>
+      </PartText>      <PartText x="311" y="282" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f</Font></Text>
+      </PartText>      <PartText x="258" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">b<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/a<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="187" y="354" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">e<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/d<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="116" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">g<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/a<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="283" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="44" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
+      </PartText>      <PartText x="115" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
+      </PartText>      <PartText x="165" y="247" width="120" height="18">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER"><Font family="libre_baskerville_italic" size="13" color="[CONFIGURATION.themeColor.1]">mode_aeolian</Font></Text>
+      </PartText>
+        </Group>
+        <Group x="0" y="0" width="450" height="450" name="inner_phrygian_cycle4">
+      <PartText x="187" y="68" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
+      </PartText>      <PartText x="258" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
+      </PartText>      <PartText x="311" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
+      </PartText>      <PartText x="330" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
+      </PartText>      <PartText x="311" y="282" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c</Font></Text>
+      </PartText>      <PartText x="258" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">f/e<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="187" y="354" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">b<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/a<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="116" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">d<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/e<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="283" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="44" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="115" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
+      </PartText>      <PartText x="165" y="247" width="120" height="18">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER"><Font family="libre_baskerville_italic" size="13" color="[CONFIGURATION.themeColor.1]">mode_phrygian</Font></Text>
+      </PartText>
+        </Group>
+        <Group x="0" y="0" width="450" height="450" name="inner_locrian_cycle5">
+      <PartText x="187" y="68" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
+      </PartText>      <PartText x="258" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
+      </PartText>      <PartText x="311" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
+      </PartText>      <PartText x="330" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
+      </PartText>      <PartText x="311" y="282" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
+      </PartText>      <PartText x="258" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">c/b<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="187" y="354" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">f/e<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="116" y="335" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="17" minSize="12" color="[CONFIGURATION.themeColor.1]">a<InlineImage resource="acc_sharp" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/>/b<InlineImage resource="acc_flat" width="5" height="13" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="283" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">d<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="44" y="211" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="63" y="140" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="115" y="87" width="76" height="28">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
+      </PartText>      <PartText x="165" y="247" width="120" height="18">
+        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
+        <Text align="CENTER" verticalAlign="CENTER"><Font family="libre_baskerville_italic" size="13" color="[CONFIGURATION.themeColor.1]">mode_locrian</Font></Text>
+      </PartText>
+        </Group>
+        </Group>
+      </BooleanOption>
+      <BooleanOption id="FALSE">
+        <Group x="0" y="0" width="450" height="450" name="inner_fixed">
     <ListConfiguration id="innerRing">
       <ListOption id="aeolian">
         <Group x="0" y="0" width="450" height="450" name="inner_aeolian">
@@ -360,6 +620,9 @@
         <Group x="0" y="0" width="450" height="450" name="inner_none"/>
       </ListOption>
     </ListConfiguration>
+        </Group>
+      </BooleanOption>
+    </BooleanConfiguration>
 
     <!-- Date window at 3 o'clock -->
     <Group x="0" y="0" width="450" height="450" name="date">
@@ -371,7 +634,7 @@
       </PartText>
     </Group>
 
-    <!-- Complication slots: battery at 12, stopwatch at 6 -->
+    <!-- Complication slots: battery at 12, stopwatch at 6, weather at 9 -->
     <ComplicationSlot x="193" y="115" width="64" height="64" slotId="0" name="top" displayName="slot_top" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
       <DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="RANGED_VALUE"/>
       <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
@@ -437,6 +700,69 @@
     </ComplicationSlot>
     <ComplicationSlot x="193" y="271" width="64" height="64" slotId="3" name="bottom" displayName="slot_bottom" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
       <DefaultProviderPolicy primaryProvider="com.samsung.android.watch.stopwatch/com.samsung.android.watch.stopwatch.complications.StopwatchComplicationProviderService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>
+      <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="22" y="6" width="20" height="20" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="2" y="28" width="60" height="26">
+              <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE" ellipsis="TRUE"><Font family="libre_baskerville_regular" size="18" minSize="11" color="[CONFIGURATION.themeColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="2" y="18" width="60" height="28">
+              <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE" ellipsis="TRUE"><Font family="libre_baskerville_regular" size="20" minSize="11" color="[CONFIGURATION.themeColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <PartDraw x="0" y="0" width="64" height="64">
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.4]" thickness="3" cap="ROUND"/>
+          </Arc>
+          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+            <Stroke color="[CONFIGURATION.themeColor.2]" thickness="3" cap="ROUND"/>
+            <Transform target="endAngle" value="-135 + ((clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])) * 270"/>
+          </Arc>
+        </PartDraw>
+        <Condition>
+          <Expressions>
+            <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+          </Expressions>
+          <Compare expression="hasIcon">
+            <PartImage x="24" y="12" width="16" height="16" tintColor="[CONFIGURATION.themeColor.1]">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+            <PartText x="8" y="29" width="48" height="22">
+              <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE" ellipsis="TRUE"><Font family="libre_baskerville_regular" size="15" minSize="11" color="[CONFIGURATION.themeColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Compare>
+          <Default>
+            <PartText x="8" y="20" width="48" height="24">
+              <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE" ellipsis="TRUE"><Font family="libre_baskerville_regular" size="16" minSize="11" color="[CONFIGURATION.themeColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+            </PartText>
+          </Default>
+        </Condition>
+      </Complication>
+      <Complication type="MONOCHROMATIC_IMAGE">
+        <PartImage x="16" y="16" width="32" height="32" tintColor="[CONFIGURATION.themeColor.1]">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+        </PartImage>
+      </Complication>
+      <Complication type="SMALL_IMAGE">
+        <PartImage x="12" y="12" width="40" height="40">
+          <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
+        </PartImage>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot x="115" y="193" width="64" height="64" slotId="4" name="left" displayName="slot_left" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
+      <DefaultProviderPolicy primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.WeatherComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>
       <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
       <Complication type="SHORT_TEXT">
         <Condition>

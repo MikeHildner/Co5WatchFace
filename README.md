@@ -18,22 +18,27 @@ PNG images and three font files.
 | 165 | middle ring |
 | 143 | relative mode of each key |
 | 120 | inner ring |
-| inside | date window at 3 o'clock, battery at 12, stopwatch at 6, mode name under the hub |
+| inside | date window at 3 o'clock, battery at 12, stopwatch at 6, weather at 9, mode name under the hub |
 
 Keys with two common spellings (D♭/C♯, G♭/F♯, B/C♭) show both, on both rings.
 
 ## Settings (on-watch editor)
 
 - **Theme.** Six colour sets: Classic, Ivory, Gold, Ocean, Sage, Mono.
-- **Inner ring.** Which relative mode to show: Aeolian (default), Dorian,
+- **Cycle modes hourly.** On by default. The inner ring changes at the top of
+  every hour, stepping through the modes in brightness order: Lydian,
+  Mixolydian, Dorian, Aeolian, Phrygian, Locrian, then round again. The mode
+  is derived from the hour of day (hour mod 6), so it needs no stored state.
+- **Inner ring.** Used when cycling is off: Aeolian (default), Dorian,
   Phrygian, Lydian, Mixolydian, Locrian, or None. Modes with a minor third are
-  written in lowercase, Lydian and Mixolydian in uppercase. The selected mode's
-  name appears under the hub.
+  written in lowercase, Lydian and Mixolydian in uppercase. Whichever mode is
+  showing, its name appears under the hub.
 - **Highlight current key.** A translucent sector in the accent colour behind
   whichever key the hour hand points at. On by default.
-- **Complications.** Battery gauge at 12 and Samsung Stopwatch at 6 by default.
-  Tap the stopwatch to open the app for start, pause and reset. Either slot can
-  be pointed at any installed data source or cleared.
+- **Complications.** Battery gauge at 12, Samsung Stopwatch at 6 and Samsung
+  Weather (condition icon and temperature) at 9 by default. Tap the stopwatch
+  to open the app for start, pause and reset. Any slot can be pointed at
+  another installed data source or cleared.
 
 WFF has no timers or state of its own, so the stopwatch is the system app's
 complication, not something the face runs itself.
@@ -138,3 +143,12 @@ Tips learned on a Galaxy Watch9:
 - The preview image (`res/drawable/preview.png`) is what the watch face
   picker shows. Replace it with a screenshot of the running face after visual
   changes.
+- Galaxy Watch quirk: anything placed inside a `ListOption` is evaluated once
+  when the face loads (against the preview time) and never refreshed, so
+  time-driven content must not live there. Content under a `BooleanOption`
+  updates live, which is why the hourly cycle is gated by a boolean setting
+  rather than being an option of the Inner ring list. The Wear OS emulator
+  does not show this difference.
+- Wear OS remembers complication choices by slot position across reinstalls.
+  To make new slot defaults apply on a watch that already had the face,
+  uninstall first.
