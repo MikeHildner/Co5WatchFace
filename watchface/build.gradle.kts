@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId = "com.mikehildner.co5watchface"
-        // Watch Face Format v2 requires Wear OS 5 (API 34) or later.
-        minSdk = 34
+        // Watch Face Format v5 requires Wear OS 6 (API 36) or later.
+        minSdk = 36
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         debug {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
         }
         release {
             // TODO: add a real signingConfig before publishing.

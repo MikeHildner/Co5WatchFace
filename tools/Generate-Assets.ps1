@@ -1,4 +1,6 @@
-# Generates the hand images and a placeholder preview for the Circle of Fifths face.
+# Generates the hand images and the sharp/flat/natural glyph images for the Circle of Fifths face.
+# The accidentals are rendered from Bravura Text (tools/fonts/BravuraText.otf, SIL OFL) as white
+# images; watchface.xml colours them per theme through InlineImage's color attribute.
 $ErrorActionPreference = "Stop"
 Add-Type -AssemblyName System.Drawing
 $out = Join-Path $PSScriptRoot "..\watchface\src\main\res\drawable"
@@ -38,63 +40,26 @@ $g.FillRectangle($white, 5, 0, 2, 252)
 $g.FillEllipse($white, 0, 228, 12, 12)
 Save $bmp $g "hand_second.png"
 
-# ---- Placeholder preview (450x450) drawn at 10:08:32. Replace with an emulator screenshot later. ----
-$bmp, $g = New-Canvas 450 450
-$g.FillEllipse([System.Drawing.Brushes]::Black, 0, 0, 450, 450)
-$linePen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(255, 0x5f, 0x63, 0x68)), 1.5
-$g.DrawEllipse($linePen, 22, 22, 406, 406)
-$g.DrawEllipse($linePen, 60, 60, 330, 330)
-$g.DrawEllipse($linePen, 105, 105, 240, 240)
-for ($k = 0; $k -lt 60; $k++) {
-  $a = $k * 6 * [math]::PI / 180
-  if ($k % 5 -eq 0) { $r1 = 206; $linePen.Width = 3 } else { $r1 = 214; $linePen.Width = 1.5 }
-  $g.DrawLine($linePen, [float](225 + $r1 * [math]::Sin($a)), [float](225 - $r1 * [math]::Cos($a)), [float](225 + 222 * [math]::Sin($a)), [float](225 - 222 * [math]::Cos($a)))
+# Accidentals from Bravura Text, trimmed to their ink bounds.
+$pfc = New-Object System.Drawing.Text.PrivateFontCollection
+$pfc.AddFontFile((Join-Path $PSScriptRoot "fonts\BravuraText.otf"))
+$font = New-Object System.Drawing.Font $pfc.Families[0], 400, ([System.Drawing.FontStyle]::Regular), ([System.Drawing.GraphicsUnit]::Pixel)
+foreach ($glyph in @(@("acc_sharp", [char]0x266F), @("acc_flat", [char]0x266D), @("acc_natural", [char]0x266E))) {
+  $bmp = New-Object System.Drawing.Bitmap 600, 900, ([System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
+  $gr = [System.Drawing.Graphics]::FromImage($bmp)
+  $gr.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::AntiAliasGridFit
+  $gr.Clear([System.Drawing.Color]::Transparent)
+  $gr.DrawString([string]$glyph[1], $font, $white, 100, 100)
+  $gr.Dispose()
+  $minX = 600; $minY = 900; $maxX = 0; $maxY = 0
+  for ($y = 0; $y -lt 900; $y++) { for ($x = 0; $x -lt 600; $x++) {
+    if ($bmp.GetPixel($x, $y).A -gt 8) {
+      if ($x -lt $minX) { $minX = $x }; if ($x -gt $maxX) { $maxX = $x }
+      if ($y -lt $minY) { $minY = $y }; if ($y -gt $maxY) { $maxY = $y }
+    } } }
+  $w = $maxX - $minX + 1; $h = $maxY - $minY + 1
+  $crop = $bmp.Clone((New-Object System.Drawing.Rectangle $minX, $minY, $w, $h), $bmp.PixelFormat)
+  $crop.Save((Join-Path $out "$($glyph[0]).png"), [System.Drawing.Imaging.ImageFormat]::Png)
+  Write-Output ("wrote {0}.png ({1}x{2})" -f $glyph[0], $w, $h)
+  $crop.Dispose(); $bmp.Dispose()
 }
-$linePen.Width = 1
-for ($k = 0; $k -lt 12; $k++) {
-  $a = (15 + $k * 30) * [math]::PI / 180
-  $g.DrawLine($linePen, [float](225 + 120 * [math]::Sin($a)), [float](225 - 120 * [math]::Cos($a)), [float](225 + 203 * [math]::Sin($a)), [float](225 - 203 * [math]::Cos($a)))
-}
-$fmt = New-Object System.Drawing.StringFormat
-$fmt.Alignment = [System.Drawing.StringAlignment]::Center
-$fmt.LineAlignment = [System.Drawing.StringAlignment]::Center
-$S = [string][char]0x266F   # ♯
-$B = [string][char]0x266D   # ♭
-$majors = @("C","G","D","A","E","B","F$S/G$B","D$B","A$B","E$B","B$B","F")
-$minors = @("a","e","b","f$S","c$S","g$S","d$S/e$B","b$B","f","c","g","d")
-$fMaj = New-Object System.Drawing.Font "Segoe UI", 22, ([System.Drawing.FontStyle]::Bold), ([System.Drawing.GraphicsUnit]::Pixel)
-$fMin = New-Object System.Drawing.Font "Segoe UI", 16, ([System.Drawing.FontStyle]::Regular), ([System.Drawing.GraphicsUnit]::Pixel)
-$fMaj = New-Object System.Drawing.Font "Segoe UI", 30, ([System.Drawing.FontStyle]::Bold), ([System.Drawing.GraphicsUnit]::Pixel)
-$fMin = New-Object System.Drawing.Font "Segoe UI", 21, ([System.Drawing.FontStyle]::Regular), ([System.Drawing.GraphicsUnit]::Pixel)
-$grey = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 0x9a, 0xa0, 0xa6))
-for ($i = 0; $i -lt 12; $i++) {
-  $a = $i * 30 * [math]::PI / 180
-  $g.DrawString($majors[$i], $fMaj, $white, [float](225 + 184 * [math]::Sin($a)), [float](225 - 184 * [math]::Cos($a)), $fmt)
-  $g.DrawString($minors[$i], $fMin, $grey, [float](225 + 143 * [math]::Sin($a)), [float](225 - 143 * [math]::Cos($a)), $fmt)
-}
-# date window
-$g.DrawRectangle($linePen, 249, 209, 68, 32)
-$fDate = New-Object System.Drawing.Font "Segoe UI", 18, ([System.Drawing.FontStyle]::Regular), ([System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString("WED 24", $fDate, $grey, 283, 225, $fmt)
-# hands at 10:08:32
-function Hand($angleDeg, $len, $tail, $width, $brush) {
-  $a = $angleDeg * [math]::PI / 180
-  $dx = [math]::Sin($a); $dy = -[math]::Cos($a)
-  $nx = -$dy; $ny = $dx
-  $pts = [System.Drawing.PointF[]]@(
-    (P (225 + $dx * $len) (225 + $dy * $len)),
-    (P (225 + $dx * ($len - 20) + $nx * $width / 2) (225 + $dy * ($len - 20) + $ny * $width / 2)),
-    (P (225 - $dx * $tail + $nx * $width / 2) (225 - $dy * $tail + $ny * $width / 2)),
-    (P (225 - $dx * $tail - $nx * $width / 2) (225 - $dy * $tail - $ny * $width / 2)),
-    (P (225 + $dx * ($len - 20) - $nx * $width / 2) (225 + $dy * ($len - 20) - $ny * $width / 2)))
-  $g.FillPolygon($brush, $pts)
-}
-Hand (10 * 30 + 8 * 0.5) 140 20 14 $white
-Hand (8 * 6) 200 25 10 $white
-$red = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 0xe5, 0x39, 0x35))
-$redPen = New-Object System.Drawing.Pen $red, 2
-$a = 32 * 6 * [math]::PI / 180
-$g.DrawLine($redPen, [float](225 - 40 * [math]::Sin($a)), [float](225 + 40 * [math]::Cos($a)), [float](225 + 212 * [math]::Sin($a)), [float](225 - 212 * [math]::Cos($a)))
-$g.FillEllipse($white, 215, 215, 20, 20)
-$g.FillEllipse([System.Drawing.Brushes]::Black, 222, 222, 6, 6)
-Save $bmp $g "preview.png"

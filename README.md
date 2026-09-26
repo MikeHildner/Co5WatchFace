@@ -1,11 +1,12 @@
 # Circle of Fifths watch face
 
 An analog Wear OS watch face built with the declarative
-[Watch Face Format](https://developer.android.com/training/wearables/wff) (WFF).
-The dial is a circle of fifths: the twelve major keys sit where the hour
-numerals would be (C at 12, G at 1, D at 2 ...) with their relative minors on an
-inner ring. There is no Kotlin or Java code; the whole face is
-`watchface/src/main/res/raw/watchface.xml` plus a few PNG hand images.
+[Watch Face Format](https://developer.android.com/training/wearables/wff) (WFF),
+version 5. The dial is a circle of fifths read in fourths clockwise: the twelve
+major keys sit where the hour numerals would be (C at 12, F at 1, B♭ at 2 ...)
+with the relative mode of each key on an inner ring. There is no Kotlin or Java
+code; the whole face is `watchface/src/main/res/raw/watchface.xml` plus a few
+PNG images and three font files.
 
 ## Layout
 
@@ -13,33 +14,69 @@ inner ring. There is no Kotlin or Java code; the whole face is
 | --- | --- |
 | 206 to 222 | minute ticks, hour ticks every fifth |
 | 203 | outer ring |
-| 184 | major keys |
+| 184 | major keys: C F B♭ E♭ A♭ D♭/C♯ G♭/F♯ B/C♭ E A D G |
 | 165 | middle ring |
-| 143 | relative minors |
+| 143 | relative mode of each key |
 | 120 | inner ring |
-| inside | date window at 3 o'clock; complication slots at 12, 9 and 6 o'clock |
+| inside | date window at 3 o'clock, battery at 12, stopwatch at 6, mode name under the hub |
 
-Complication slot defaults: 12 o'clock battery gauge, 9 o'clock step count,
-6 o'clock heart rate. All three accept short text, ranged value, icon and small
-image data. The user picks any installed data source in the on-watch editor, or
-clears a slot. Slots are 64 px wide, so pick sources that render a number or an
-icon rather than long text.
+Keys with two common spellings (D♭/C♯, G♭/F♯, B/C♭) show both, on both rings.
+
+## Settings (on-watch editor)
+
+- **Theme.** Six colour sets: Classic, Ivory, Gold, Ocean, Sage, Mono.
+- **Inner ring.** Which relative mode to show: Aeolian (default), Dorian,
+  Phrygian, Lydian, Mixolydian, Locrian, or None. Modes with a minor third are
+  written in lowercase, Lydian and Mixolydian in uppercase. The selected mode's
+  name appears under the hub.
+- **Highlight current key.** A translucent sector in the accent colour behind
+  whichever key the hour hand points at. On by default.
+- **Complications.** Battery gauge at 12 and Samsung Stopwatch at 6 by default.
+  Tap the stopwatch to open the app for start, pause and reset. Either slot can
+  be pointed at any installed data source or cleared.
+
+WFF has no timers or state of its own, so the stopwatch is the system app's
+complication, not something the face runs itself.
 
 ## Themes
 
-Themes live in the `ColorConfiguration` block at the top of `watchface.xml`.
-Each `ColorOption` is a list of five colours referenced by index:
+Each `ColorOption` in `watchface.xml` is a list of five colours referenced by index:
 
 | Index | Used for |
 | --- | --- |
 | 0 | major keys |
-| 1 | relative minors, date, complication text |
-| 2 | accent: second hand and gauge arcs |
+| 1 | inner ring, date, complication text, mode name |
+| 2 | accent: second hand, gauge arcs, key highlight |
 | 3 | hour and minute hands, hub |
 | 4 | rings, spokes, ticks |
 
 To add a theme, add a `ColorOption` with a new `id` and a matching
 `theme_*` string in `res/values/strings.xml`.
+
+## Typography
+
+Letters are set in Libre Baskerville (bold for the outer ring, italic for the
+inner ring, regular for the date and complications). Sharps and flats are not
+in that font, so they are rendered from Bravura Text into small white PNGs
+(`res/drawable/acc_*.png`) and placed inline in the text via `InlineImage`,
+whose `color` attribute follows the theme. Both fonts are under the SIL Open
+Font License; see `licenses/`.
+
+## Generator scripts
+
+`watchface.xml` and the images are produced by the scripts in `tools/`. They
+compute label positions, ticks and spokes from the radii above, and spell the
+relative modes from scale degrees so enharmonic keys come out right (for
+example G♭ major's Locrian is F, F♯ major's is E♯). Edit the XML directly for
+small tweaks; re-run the scripts to move rings, change fonts or add modes.
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools/Generate-Assets.ps1
+```
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools/Generate-WatchFaceXml.ps1
+```
 
 ## Build
 
@@ -55,13 +92,14 @@ Validate the XML against the WFF schema before building (the validator jar is
 published at <https://github.com/google/watchface/releases>):
 
 ```bash
-java -jar wff-validator.jar 2 watchface/src/main/res/raw/watchface.xml
+java -jar wff-validator.jar 5 watchface/src/main/res/raw/watchface.xml
 ```
 
 ## Run on the emulator
 
-Create a Wear OS AVD once (Device Manager in Android Studio, or `avdmanager`),
-then:
+Format version 5 needs a Wear OS image based on Android 17 (API 37); the
+Wear OS 6.1 image refuses to load the face. Create a round AVD from
+`system-images;android-37.0;android-wear-signed;x86_64`, then:
 
 ```bash
 adb install -r watchface/build/outputs/apk/debug/watchface-debug.apk
@@ -84,7 +122,7 @@ adb connect <ip>:<port>
 Then use the same `adb install` and `am broadcast` commands as for the
 emulator, adding `-s <ip>:<port>` if the emulator is also running.
 
-Tips learned on a Galaxy Watch8:
+Tips learned on a Galaxy Watch9:
 
 - The watch drops Wi-Fi while the phone is connected over Bluetooth, and
   newer One UI Watch has no "Wi-Fi always on" setting. Turn Bluetooth off on
@@ -93,28 +131,10 @@ Tips learned on a Galaxy Watch8:
   current one with `adb mdns services` (look for `_adb-tls-connect`).
 - The watch does not answer ping, so test reachability with TCP or mDNS.
 
-## Generator scripts
-
-`watchface.xml` and the hand images were produced by the scripts in `tools/`.
-They compute the label positions, ticks and spokes from the radii listed
-above. Edit the XML directly for small changes; re-run the scripts when you
-want to move rings or re-space labels:
-
-```bash
-powershell -ExecutionPolicy Bypass -File tools/Generate-WatchFaceXml.ps1
-```
-
-```bash
-powershell -ExecutionPolicy Bypass -File tools/Generate-Assets.ps1
-```
-
 ## Notes
 
-- `AndroidManifest.xml` declares WFF version 2 (Wear OS 5, API 34+). Bump the
-  `com.google.wear.watchface.format.version` property and `minSdk` to use
-  newer features such as ambient transitions (v4, Wear OS 6).
+- `AndroidManifest.xml` declares WFF version 5 and `minSdk` is 36. Older
+  watches cannot install the face.
 - The preview image (`res/drawable/preview.png`) is what the watch face
   picker shows. Replace it with a screenshot of the running face after visual
   changes.
-- Musical sharps and flats are the Unicode glyphs U+266F and U+266D; keep the
-  XML saved as UTF-8.

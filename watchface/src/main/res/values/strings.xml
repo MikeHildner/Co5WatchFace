@@ -11,8 +11,20 @@
     <string name="theme_sage">Sage</string>
     <string name="theme_mono">Mono</string>
 
+    <!-- Inner ring mode picker -->
+    <string name="inner_ring_label">Inner ring</string>
+    <string name="mode_aeolian">Aeolian</string>
+    <string name="mode_dorian">Dorian</string>
+    <string name="mode_phrygian">Phrygian</string>
+    <string name="mode_lydian">Lydian</string>
+    <string name="mode_mixolydian">Mixolydian</string>
+    <string name="mode_locrian">Locrian</string>
+    <string name="mode_none">None</string>
+
+    <!-- Key highlight toggle -->
+    <string name="highlight_label">Highlight current key</string>
+
     <!-- Complication slots -->
     <string name="slot_top">Top</string>
-    <string name="slot_left">Left</string>
     <string name="slot_bottom">Bottom</string>
 </resources>
