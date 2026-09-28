@@ -14,11 +14,19 @@ PNG images and three font files.
 | --- | --- |
 | 206 to 222 | minute ticks, hour ticks every fifth |
 | 203 | outer ring |
-| 184 | major keys: C F B♭ E♭ A♭ D♭/C♯ G♭/F♯ B/C♭ E A D G |
-| 165 | middle ring |
-| 143 | relative mode of each key |
-| 120 | inner ring |
-| inside | date window at 3 o'clock, battery at 12, stopwatch at 6, weather at 9, mode name under the hub |
+| 183 | outer labels: major keys C F B♭ E♭ A♭ D♭/C♯ G♭/F♯ B/C♭ E A D G |
+| 162 | middle ring |
+| 137 | inner labels: relative mode of each key |
+| 112 | inner ring |
+| about 100 | mode name, curved along the inside of the inner ring at 6 o'clock |
+| inside | date window at 3 o'clock (tap opens Calendar), battery at 12, stopwatch at 6, weather at 9 |
+
+With **Swap rings** on, the two label bands trade places: the modes move to
+the outer band in bold and the major keys to the inner band.
+
+Text sizes on the 450 canvas: outer labels 33 (27 for dual spellings), inner
+labels 26 (21), mode name 19, date 19. All geometry and sizes are constants at
+the top of `tools/Generate-WatchFaceXml.ps1`.
 
 Keys with two common spellings (D♭/C♯, G♭/F♯, B/C♭) show both, on both rings.
 
@@ -33,8 +41,11 @@ Keys with two common spellings (D♭/C♯, G♭/F♯, B/C♭) show both, on both
   Phrygian, Lydian, Mixolydian, Locrian, or None. Modes with a minor third are
   written in lowercase, Lydian and Mixolydian in uppercase. Whichever mode is
   showing, its name appears under the hub.
+- **Swap rings.** Off by default. Puts the modes on the outer ring and the
+  major keys on the inner ring, for practising the relationship the other way
+  round. Cycling and the fixed Inner ring choice work the same in both layouts.
 - **Highlight current key.** A translucent sector in the accent colour behind
-  whichever key the hour hand points at. On by default.
+  whichever outer label the hour hand points at. On by default.
 - **Complications.** Battery gauge at 12, Samsung Stopwatch at 6 and Samsung
   Weather (condition icon and temperature) at 9 by default. Tap the stopwatch
   to open the app for start, pause and reset. Any slot can be pointed at
@@ -49,8 +60,8 @@ Each `ColorOption` in `watchface.xml` is a list of five colours referenced by in
 
 | Index | Used for |
 | --- | --- |
-| 0 | major keys |
-| 1 | inner ring, date, complication text, mode name |
+| 0 | outer ring labels |
+| 1 | inner ring labels, date, complication text, mode name |
 | 2 | accent: second hand, gauge arcs, key highlight |
 | 3 | hour and minute hands, hub |
 | 4 | rings, spokes, ticks |
@@ -60,8 +71,9 @@ To add a theme, add a `ColorOption` with a new `id` and a matching
 
 ## Typography
 
-Letters are set in Libre Baskerville (bold for the outer ring, italic for the
-inner ring, regular for the date and complications). Sharps and flats are not
+Letters are set in Libre Baskerville: bold on the outer ring, italic for
+modes on the inner ring, upright regular for major keys on the inner ring
+(swapped layout), and regular for the date and complications. Sharps and flats are not
 in that font, so they are rendered from Bravura Text into small white PNGs
 (`res/drawable/acc_*.png`) and placed inline in the text via `InlineImage`,
 whose `color` attribute follows the theme. Both fonts are under the SIL Open

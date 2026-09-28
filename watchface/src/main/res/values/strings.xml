@@ -24,6 +24,7 @@
 
     <!-- Key highlight toggle -->
     <string name="highlight_label">Highlight current key</string>
+    <string name="swap_label">Swap rings</string>
 
     <!-- Complication slots -->
     <string name="slot_top">Top</string>

@@ -7,16 +7,40 @@ function F([double]$v) { $v.ToString("0.##", $inv) }
 function PX([double]$r, [double]$deg) { F (225 + $r * [math]::Sin($deg * [math]::PI / 180)) }
 function PY([double]$r, [double]$deg) { F (225 - $r * [math]::Cos($deg * [math]::PI / 180)) }
 
-# Theme colour indices (see ColorConfiguration below)
-$MAJOR  = "[CONFIGURATION.themeColor.0]"
-$MINOR  = "[CONFIGURATION.themeColor.1]"
-$ACCENT = "[CONFIGURATION.themeColor.2]"
-$HANDS  = "[CONFIGURATION.themeColor.3]"
-$LINES  = "[CONFIGURATION.themeColor.4]"
+# ---------------------------------------------------------------------------
+# Theme colour indices (see ColorConfiguration below). Colours are positional:
+# whatever sits on the outer ring uses index 0, the inner ring index 1.
+# ---------------------------------------------------------------------------
+$C_OUTER = "[CONFIGURATION.themeColor.0]"
+$C_INNER = "[CONFIGURATION.themeColor.1]"
+$ACCENT  = "[CONFIGURATION.themeColor.2]"
+$HANDS   = "[CONFIGURATION.themeColor.3]"
+$LINES   = "[CONFIGURATION.themeColor.4]"
 
 $FONT_BOLD   = "libre_baskerville_bold"
 $FONT_REG    = "libre_baskerville_regular"
 $FONT_ITALIC = "libre_baskerville_italic"
+
+# ---------------------------------------------------------------------------
+# Geometry (450 canvas). Change these to rebalance the dial.
+# ---------------------------------------------------------------------------
+$R_TICK_OUT      = 222      # outer end of all ticks
+$R_TICK_MINUTE   = 214      # inner end of minute ticks
+$R_TICK_HOUR     = 206      # inner end of hour ticks
+$R_OUTER_LINE    = 203      # outer ring
+$R_OUTER_LABEL   = 183      # centre of outer labels
+$OUTER_BOX       = @(100, 40)
+$OUTER_SIZE      = 33;  $OUTER_SIZE_DUAL = 27
+$R_MIDDLE_LINE   = 162      # ring between the two label bands
+$R_INNER_LABEL   = 137      # centre of inner labels
+$INNER_BOX       = @(86, 32)
+$INNER_SIZE      = 26;  $INNER_SIZE_DUAL = 21
+$R_INNER_LINE    = 112      # inner ring
+$MODE_NAME_DIAM  = 204      # diameter of the arc the mode name follows (6 o'clock)
+$MODE_NAME_SIZE  = 19
+$SLOT            = 58       # complication slot size
+$SLOT_OFFSET     = 68       # slot centre distance from dial centre (12 and 9 o'clock)
+$SLOT_OFFSET_6   = 62       # 6 o'clock slot sits a little higher to clear the mode name
 
 # ---------------------------------------------------------------------------
 # Music theory: spell every key and its relative modes correctly.
@@ -25,9 +49,8 @@ $LETTERS   = @("C","D","E","F","G","A","B")
 $NATURAL   = @(0, 2, 4, 5, 7, 9, 11)          # pitch class of each natural letter
 $INTERVALS = @(0, 2, 4, 5, 7, 9, 11)          # major scale degrees
 
-# Outer ring, clockwise from 12 o'clock. Positions 5, 6 and 7 carry both enharmonic spellings.
-# Each entry is parsed into a list of (letterIndex, accidental) pairs; "b" = flat, "#" = sharp.
-$OUTER_NAMES = @("C","F","Bb","Eb","Ab","Db/C#","Gb/F#","B/Cb","E","A","D","G")
+# Major keys, clockwise from 12 o'clock. Positions 5, 6 and 7 carry both enharmonic spellings.
+$KEY_NAMES = @("C","F","Bb","Eb","Ab","Db/C#","Gb/F#","B/Cb","E","A","D","G")
 function ParseKey([string]$name) {
   $list = New-Object System.Collections.Generic.List[object]
   foreach ($s in $name.Split("/")) {
@@ -38,9 +61,9 @@ function ParseKey([string]$name) {
   }
   return ,$list   # unary comma stops PowerShell unrolling the list
 }
-$OUTER = @($OUTER_NAMES | ForEach-Object { ,(ParseKey $_) })
+$MAJOR_KEYS = @($KEY_NAMES | ForEach-Object { ,(ParseKey $_) })
 
-# Modes: id, display degree (0-based scale degree of the mode's tonic), lowercase?
+# Modes: id, 0-based scale degree of the mode's tonic, lowercase (minor third)?
 $MODES = @(
   @{ id = "aeolian";    degree = 5; lower = $true  }
   @{ id = "dorian";     degree = 1; lower = $true  }
@@ -49,6 +72,8 @@ $MODES = @(
   @{ id = "mixolydian"; degree = 4; lower = $false }
   @{ id = "locrian";    degree = 6; lower = $true  }
 )
+# Hourly cycle, brightness order (each step adds a flat): hour mod 6 picks the mode.
+$CYCLE_ORDER = @("lydian", "mixolydian", "dorian", "aeolian", "phrygian", "locrian")
 
 function ModeTonic([int]$letter, [int]$acc, [int]$degree) {
   $L  = ($letter + $degree) % 7
@@ -57,6 +82,16 @@ function ModeTonic([int]$letter, [int]$acc, [int]$degree) {
   if ($a -gt 6)  { $a -= 12 }
   if ($a -lt -6) { $a += 12 }
   return @($L, $a)
+}
+
+function ModeSpellings($mode) {
+  $all = New-Object System.Collections.Generic.List[object]
+  foreach ($key in $MAJOR_KEYS) {
+    $t = New-Object System.Collections.Generic.List[object]
+    foreach ($sp in $key) { $t.Add((ModeTonic $sp[0] $sp[1] $mode.degree)) }
+    $all.Add($t)
+  }
+  return ,$all
 }
 
 # ---------------------------------------------------------------------------
@@ -70,132 +105,167 @@ function AccidentalXml([int]$acc, [double]$size, $color) {
   else            { $res = "acc_flat";  $w = [math]::Round($h * 136 / 369) }
   return "<InlineImage resource=""$res"" width=""$w"" height=""$h"" color=""$color""/>"
 }
-
 function SpellingXml($spelling, [bool]$lower, [double]$size, $color) {
   $letter = $LETTERS[$spelling[0]]
   if ($lower) { $letter = $letter.ToLower() }
   return $letter + (AccidentalXml $spelling[1] $size $color)
 }
-
 function LabelXml($spellings, [bool]$lower, [double]$size, $color) {
   ($spellings | ForEach-Object { SpellingXml $_ $lower $size $color }) -join "/"
 }
 
-function LabelPartText([int]$pos, [double]$r, [int]$w, [int]$h, [string]$family, [double]$size, $color, [string]$inner, [string]$partExtra = "") {
-  $a  = $pos * 30
-  $cx = 225 + $r * [math]::Sin($a * [math]::PI / 180)
-  $cy = 225 - $r * [math]::Cos($a * [math]::PI / 180)
-  $x = [int][math]::Round($cx - $w / 2); $y = [int][math]::Round($cy - $h / 2)
+# Ring placement: the outer band always uses bold and the outer colour; the inner band uses the
+# inner colour, italic for modes and upright for major keys.
+$PLACE = @{
+  outer = @{ r = $R_OUTER_LABEL; box = $OUTER_BOX; size = $OUTER_SIZE; dual = $OUTER_SIZE_DUAL; color = $C_OUTER }
+  inner = @{ r = $R_INNER_LABEL; box = $INNER_BOX; size = $INNER_SIZE; dual = $INNER_SIZE_DUAL; color = $C_INNER }
+}
+
+function RingLabelsXml($spellingLists, [string]$placement, [string]$family, [bool]$lower, [string]$partExtra = "") {
+  $p = $PLACE[$placement]
+  $sb = New-Object System.Text.StringBuilder
+  for ($i = 0; $i -lt 12; $i++) {
+    $sp = $spellingLists[$i]
+    $size = if ($sp.Count -gt 1) { $p.dual } else { $p.size }
+    $a  = $i * 30
+    $cx = 225 + $p.r * [math]::Sin($a * [math]::PI / 180)
+    $cy = 225 - $p.r * [math]::Cos($a * [math]::PI / 180)
+    $w = $p.box[0]; $h = $p.box[1]
+    $x = [int][math]::Round($cx - $w / 2); $y = [int][math]::Round($cy - $h / 2)
+    $extraLine = if ($partExtra) { "`n$partExtra" } else { "" }
+    [void]$sb.Append(@"
+      <PartText x="$x" y="$y" width="$w" height="$h">$extraLine
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="$family" size="$(F $size)" minSize="12" color="$($p.color)">$(LabelXml $sp $lower $size $p.color)</Font></Text>
+      </PartText>
+
+"@)
+  }
+  return $sb.ToString()
+}
+
+# Curved mode name at 6 o'clock, just inside the inner ring, reading left to right.
+function ModeNameXml([string]$modeId, [string]$partExtra = "") {
   $extraLine = if ($partExtra) { "`n$partExtra" } else { "" }
   return @"
-      <PartText x="$x" y="$y" width="$w" height="$h">$extraLine
-        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="$family" size="$(F $size)" minSize="12" color="$color">$inner</Font></Text>
+      <PartText x="0" y="0" width="450" height="450">$extraLine
+        <TextCircular centerX="225" centerY="225" width="$MODE_NAME_DIAM" height="$MODE_NAME_DIAM" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="$FONT_ITALIC" size="$MODE_NAME_SIZE" color="$C_INNER">mode_$modeId</Font></TextCircular>
       </PartText>
+
 "@
 }
 
-# Outer ring: major keys
-$majorXml = New-Object System.Text.StringBuilder
-for ($i = 0; $i -lt 12; $i++) {
-  $sp = $OUTER[$i]
-  $size = if ($sp.Count -gt 1) { 25 } else { 31 }
-  [void]$majorXml.Append((LabelPartText $i 184 96 38 $FONT_BOLD $size $MAJOR (LabelXml $sp $false $size $MAJOR)))
+function ModeGroupXml($mode, [string]$placement, [string]$name, [string]$partExtra = "") {
+  $family = if ($placement -eq "outer") { $FONT_BOLD } else { $FONT_ITALIC }
+  return @"
+        <Group x="0" y="0" width="450" height="450" name="$name">
+$(RingLabelsXml (ModeSpellings $mode) $placement $family $mode.lower $partExtra)$(ModeNameXml $mode.id $partExtra)        </Group>
+"@
 }
 
-# Inner ring: one Group per mode, swapped by the innerRing setting
-function ModeGroupXml($mode, [string]$suffix = "", [string]$partExtra = "") {
-  $sb = New-Object System.Text.StringBuilder
-  [void]$sb.AppendLine("        <Group x=""0"" y=""0"" width=""450"" height=""450"" name=""inner_$($mode.id)$suffix"">")
-  for ($i = 0; $i -lt 12; $i++) {
-    $tonics = New-Object System.Collections.Generic.List[object]
-    foreach ($sp in $OUTER[$i]) { $tonics.Add((ModeTonic $sp[0] $sp[1] $mode.degree)) }
-    $size = if ($tonics.Count -gt 1) { 17 } else { 21 }
-    [void]$sb.Append((LabelPartText $i 143 76 28 $FONT_ITALIC $size $MINOR (LabelXml $tonics $mode.lower $size $MINOR) $partExtra))
+function MajorsGroupXml([string]$placement, [string]$name) {
+  $family = if ($placement -eq "outer") { $FONT_BOLD } else { $FONT_REG }
+  return @"
+      <Group x="0" y="0" width="450" height="450" name="$name">
+$(RingLabelsXml $MAJOR_KEYS $placement $family $false)      </Group>
+"@
+}
+
+# One complete ring set. $modesAt = "inner" (standard) or "outer" (swapped).
+# Everything time-driven sits under BooleanOptions: on the Galaxy Watch, content inside a
+# ListOption is evaluated once at load (against the preview time) and never refreshed, while
+# BooleanOption content stays live. Fixed modes are static, so they may live in the ListOption.
+function RingSetXml([string]$modesAt, [string]$tag) {
+  $majorsAt = if ($modesAt -eq "inner") { "outer" } else { "inner" }
+  $cycle = New-Object System.Text.StringBuilder
+  for ($k = 0; $k -lt $CYCLE_ORDER.Count; $k++) {
+    $m = $MODES | Where-Object { $_.id -eq $CYCLE_ORDER[$k] }
+    $alpha = "        <Transform target=""alpha"" value=""255 * (1 - clamp(abs(([HOUR_0_23] % 6) - $k), 0, 1))""/>"
+    [void]$cycle.AppendLine((ModeGroupXml $m $modesAt "modes_$($m.id)_cycle_$tag" $alpha))
   }
-  # Mode name under the hub
-  [void]$sb.AppendLine("      <PartText x=""165"" y=""247"" width=""120"" height=""18"">")
-  if ($partExtra) { [void]$sb.AppendLine($partExtra) }
-  [void]$sb.AppendLine("        <Text align=""CENTER"" verticalAlign=""CENTER""><Font family=""$FONT_ITALIC"" size=""13"" color=""$MINOR"">mode_$($mode.id)</Font></Text>")
-  [void]$sb.AppendLine("      </PartText>")
-  [void]$sb.AppendLine("        </Group>")
-  return $sb.ToString().TrimEnd()
+  $fixed = New-Object System.Text.StringBuilder
+  foreach ($m in $MODES) {
+    [void]$fixed.AppendLine("            <ListOption id=""$($m.id)"">")
+    [void]$fixed.AppendLine((ModeGroupXml $m $modesAt "modes_$($m.id)_fixed_$tag"))
+    [void]$fixed.AppendLine("            </ListOption>")
+  }
+  [void]$fixed.AppendLine("            <ListOption id=""none"">")
+  [void]$fixed.AppendLine("              <Group x=""0"" y=""0"" width=""450"" height=""450"" name=""modes_none_$tag""/>")
+  [void]$fixed.AppendLine("            </ListOption>")
+  return @"
+      <Group x="0" y="0" width="450" height="450" name="rings_$tag">
+$(MajorsGroupXml $majorsAt "majors_$tag")
+        <BooleanConfiguration id="cycleHourly">
+          <BooleanOption id="TRUE">
+            <Group x="0" y="0" width="450" height="450" name="cycle_$tag">
+$($cycle.ToString().TrimEnd())
+            </Group>
+          </BooleanOption>
+          <BooleanOption id="FALSE">
+            <Group x="0" y="0" width="450" height="450" name="fixed_$tag">
+          <ListConfiguration id="innerRing">
+$($fixed.ToString().TrimEnd())
+          </ListConfiguration>
+            </Group>
+          </BooleanOption>
+        </BooleanConfiguration>
+      </Group>
+"@
 }
-$modeOptions = New-Object System.Text.StringBuilder
-
-# "Cycle modes hourly": the mode follows the hour of day in brightness order (each step adds a
-# flat), switching at the top of every hour. Stateless: hour mod 6 picks the mode, applied as an
-# alpha transform on every text element of each mode group.
-# This lives under a BooleanConfiguration, not a ListOption: on the Galaxy Watch anything inside a
-# ListOption is evaluated once at load (against the preview time) and never refreshed, whereas
-# content under a BooleanOption stays live (the key highlight relies on the same behaviour).
-$CYCLE_ORDER = @("lydian", "mixolydian", "dorian", "aeolian", "phrygian", "locrian")
-$cycleGroups = New-Object System.Text.StringBuilder
-for ($k = 0; $k -lt $CYCLE_ORDER.Count; $k++) {
-  $m = $MODES | Where-Object { $_.id -eq $CYCLE_ORDER[$k] }
-  $alpha = "        <Transform target=""alpha"" value=""255 * (1 - clamp(abs(([HOUR_0_23] % 6) - $k), 0, 1))""/>"
-  [void]$cycleGroups.AppendLine((ModeGroupXml $m "_cycle$k" $alpha))
-}
-
-foreach ($m in $MODES) {
-  [void]$modeOptions.AppendLine("      <ListOption id=""$($m.id)"">")
-  [void]$modeOptions.AppendLine((ModeGroupXml $m))
-  [void]$modeOptions.AppendLine("      </ListOption>")
-}
-[void]$modeOptions.AppendLine("      <ListOption id=""none"">")
-[void]$modeOptions.AppendLine("        <Group x=""0"" y=""0"" width=""450"" height=""450"" name=""inner_none""/>")
-[void]$modeOptions.AppendLine("      </ListOption>")
 
 # ---- ticks: 60 minute ticks, every 5th is an hour tick ----
 $ticks = New-Object System.Text.StringBuilder
 for ($k = 0; $k -lt 60; $k++) {
   $a = $k * 6
-  if ($k % 5 -eq 0) { $r1 = 206; $th = 3 } else { $r1 = 214; $th = 1.5 }
-  [void]$ticks.AppendLine("        <Line startX=""$(PX $r1 $a)"" startY=""$(PY $r1 $a)"" endX=""$(PX 222 $a)"" endY=""$(PY 222 $a)""><Stroke color=""$LINES"" thickness=""$th"" cap=""BUTT""/></Line>")
+  if ($k % 5 -eq 0) { $r1 = $R_TICK_HOUR; $th = 3 } else { $r1 = $R_TICK_MINUTE; $th = 1.5 }
+  [void]$ticks.AppendLine("        <Line startX=""$(PX $r1 $a)"" startY=""$(PY $r1 $a)"" endX=""$(PX $R_TICK_OUT $a)"" endY=""$(PY $R_TICK_OUT $a)""><Stroke color=""$LINES"" thickness=""$th"" cap=""BUTT""/></Line>")
 }
 # ---- spokes between the 12 segments ----
 $spokes = New-Object System.Text.StringBuilder
 for ($k = 0; $k -lt 12; $k++) {
   $a = 15 + $k * 30
-  [void]$spokes.AppendLine("        <Line startX=""$(PX 120 $a)"" startY=""$(PY 120 $a)"" endX=""$(PX 203 $a)"" endY=""$(PY 203 $a)""><Stroke color=""$LINES"" thickness=""1"" cap=""BUTT""/></Line>")
+  [void]$spokes.AppendLine("        <Line startX=""$(PX $R_INNER_LINE $a)"" startY=""$(PY $R_INNER_LINE $a)"" endX=""$(PX $R_OUTER_LINE $a)"" endY=""$(PY $R_OUTER_LINE $a)""><Stroke color=""$LINES"" thickness=""1"" cap=""BUTT""/></Line>")
+}
+function RingEllipse([double]$r, [double]$thick) {
+  "        <Ellipse x=""$(F (225 - $r))"" y=""$(F (225 - $r))"" width=""$(F (2 * $r))"" height=""$(F (2 * $r))""><Stroke color=""$LINES"" thickness=""$thick""/></Ellipse>"
 }
 
-# ---- complication text helper ----
-function CompText([int]$x, [int]$y, [int]$w, [int]$h, [double]$size, $color) {
+# ---- complication rendering (coordinates relative to the $SLOT-sized slot) ----
+function CompText([int]$x, [int]$y, [int]$w, [int]$h, [double]$size) {
 @"
             <PartText x="$x" y="$y" width="$w" height="$h">
-              <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE" ellipsis="TRUE"><Font family="$FONT_REG" size="$size" minSize="11" color="$color"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+              <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE" ellipsis="TRUE"><Font family="$FONT_REG" size="$size" minSize="11" color="$C_INNER"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
             </PartText>
 "@
 }
-
-# ---- complication slot renderer (64x64, coordinates relative to the slot) ----
-function Slot($id, $name, $displayName, $x, $y, $policy) {
+function Slot($id, $name, $displayName, [int]$cx, [int]$cy, $policy) {
+  $S = $SLOT; $half = [int]($S / 2)
+  $x = $cx - $half; $y = $cy - $half
 @"
-    <ComplicationSlot x="$x" y="$y" width="64" height="64" slotId="$id" name="$name" displayName="$displayName" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot x="$x" y="$y" width="$S" height="$S" slotId="$id" name="$name" displayName="$displayName" supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
       $policy
-      <BoundingOval x="0" y="0" width="64" height="64" outlinePadding="2"/>
+      <BoundingOval x="0" y="0" width="$S" height="$S" outlinePadding="2"/>
       <Complication type="SHORT_TEXT">
         <Condition>
           <Expressions>
             <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
           </Expressions>
           <Compare expression="hasIcon">
-            <PartImage x="22" y="6" width="20" height="20" tintColor="$MINOR">
+            <PartImage x="$($half - 9)" y="4" width="18" height="18" tintColor="$C_INNER">
               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
             </PartImage>
-$(CompText 2 28 60 26 18 $MINOR)
+$(CompText 1 23 ($S - 2) 26 20)
           </Compare>
           <Default>
-$(CompText 2 18 60 28 20 $MINOR)
+$(CompText 1 15 ($S - 2) 28 22)
           </Default>
         </Condition>
       </Complication>
       <Complication type="RANGED_VALUE">
-        <PartDraw x="0" y="0" width="64" height="64">
-          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+        <PartDraw x="0" y="0" width="$S" height="$S">
+          <Arc centerX="$half" centerY="$half" width="$($S - 6)" height="$($S - 6)" startAngle="-135" endAngle="135">
             <Stroke color="$LINES" thickness="3" cap="ROUND"/>
           </Arc>
-          <Arc centerX="32" centerY="32" width="56" height="56" startAngle="-135" endAngle="135">
+          <Arc centerX="$half" centerY="$half" width="$($S - 6)" height="$($S - 6)" startAngle="-135" endAngle="135">
             <Stroke color="$ACCENT" thickness="3" cap="ROUND"/>
             <Transform target="endAngle" value="-135 + ((clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])) * 270"/>
           </Arc>
@@ -205,23 +275,23 @@ $(CompText 2 18 60 28 20 $MINOR)
             <Expression name="hasIcon"><![CDATA[[COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
           </Expressions>
           <Compare expression="hasIcon">
-            <PartImage x="24" y="12" width="16" height="16" tintColor="$MINOR">
+            <PartImage x="$($half - 7)" y="10" width="14" height="14" tintColor="$C_INNER">
               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
             </PartImage>
-$(CompText 8 29 48 22 15 $MINOR)
+$(CompText 6 25 ($S - 12) 20 17)
           </Compare>
           <Default>
-$(CompText 8 20 48 24 16 $MINOR)
+$(CompText 6 17 ($S - 12) 24 19)
           </Default>
         </Condition>
       </Complication>
       <Complication type="MONOCHROMATIC_IMAGE">
-        <PartImage x="16" y="16" width="32" height="32" tintColor="$MINOR">
+        <PartImage x="$($half - 15)" y="$($half - 15)" width="30" height="30" tintColor="$C_INNER">
           <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
         </PartImage>
       </Complication>
       <Complication type="SMALL_IMAGE">
-        <PartImage x="12" y="12" width="40" height="40">
+        <PartImage x="$($half - 19)" y="$($half - 19)" width="38" height="38">
           <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
         </PartImage>
       </Complication>
@@ -233,9 +303,13 @@ $batteryPolicy   = '<DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY"
 $stopwatchPolicy = '<DefaultProviderPolicy primaryProvider="com.samsung.android.watch.stopwatch/com.samsung.android.watch.stopwatch.complications.StopwatchComplicationProviderService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>'
 # Samsung Weather on Galaxy Watch: condition icon plus current temperature.
 $weatherPolicy   = '<DefaultProviderPolicy primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.WeatherComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>'
-$slotTop    = Slot 0 "top"    "slot_top"    193 115 $batteryPolicy
-$slotBottom = Slot 3 "bottom" "slot_bottom" 193 271 $stopwatchPolicy
-$slotLeft   = Slot 4 "left"   "slot_left"   115 193 $weatherPolicy
+$slotTop    = Slot 0 "top"    "slot_top"    225 (225 - $SLOT_OFFSET) $batteryPolicy
+$slotBottom = Slot 3 "bottom" "slot_bottom" 225 (225 + $SLOT_OFFSET_6) $stopwatchPolicy
+$slotLeft   = Slot 4 "left"   "slot_left"   (225 - $SLOT_OFFSET) 225 $weatherPolicy
+
+# Highlight sector spans the outer label band.
+$HL_R     = ($R_MIDDLE_LINE + $R_OUTER_LINE) / 2
+$HL_THICK = $R_OUTER_LINE - $R_MIDDLE_LINE
 
 $xml = @"
 <?xml version="1.0" encoding="utf-8"?>
@@ -244,16 +318,18 @@ $xml = @"
   Generated by tools/Generate-WatchFaceXml.ps1; edit that script for layout changes.
 
   Layout (450x450 canvas, centre 225,225):
-    r 206-222  minute/hour ticks
-    r 203      outer ring
-    r 184      major keys, clockwise in FOURTHS: C F Bb Eb Ab Db/C# Gb/F# B/Cb E A D G
-    r 165      middle ring
-    r 143      relative mode of each key (cycles hourly by default; user-selectable)
-    r 120      inner ring
-    inside     date window (3 o'clock), battery (12), stopwatch (6), weather (9), mode name under the hub
+    r $R_TICK_HOUR-$R_TICK_OUT  minute/hour ticks
+    r $R_OUTER_LINE      outer ring
+    r $R_OUTER_LABEL      outer labels: major keys, clockwise in FOURTHS: C F Bb Eb Ab Db/C# Gb/F# B/Cb E A D G
+    r $R_MIDDLE_LINE      middle ring
+    r $R_INNER_LABEL      inner labels: relative mode of each key (cycles hourly by default)
+    r $R_INNER_LINE      inner ring
+    inside     date window (3 o'clock, tap opens Calendar), battery (12), stopwatch (6), weather (9),
+               mode name curved along the inner ring at 6 o'clock
+  "Swap rings" puts the modes on the outer ring and the major keys on the inner ring.
 
   Theme colours, by index into the selected ColorOption:
-    0 major keys   1 inner ring / secondary text   2 accent (second hand, gauges, key highlight)
+    0 outer ring labels   1 inner ring labels / secondary text   2 accent (second hand, gauges, key highlight)
     3 hour+minute hands   4 rings, ticks and spokes
 -->
 <WatchFace width="450" height="450" clipShape="CIRCLE">
@@ -279,6 +355,7 @@ $xml = @"
       <ListOption id="locrian"    displayName="mode_locrian"/>
       <ListOption id="none"       displayName="mode_none"/>
     </ListConfiguration>
+    <BooleanConfiguration id="swapRings" displayName="swap_label" screenReaderText="swap_label" defaultValue="FALSE"/>
     <BooleanConfiguration id="highlightKey" displayName="highlight_label" screenReaderText="highlight_label" defaultValue="TRUE"/>
   </UserConfigurations>
 
@@ -288,21 +365,21 @@ $xml = @"
     <Group x="0" y="0" width="450" height="450" name="dial">
       <Variant mode="AMBIENT" target="alpha" value="120"/>
       <PartDraw x="0" y="0" width="450" height="450">
-        <Ellipse x="22" y="22" width="406" height="406"><Stroke color="$LINES" thickness="1.5"/></Ellipse>
-        <Ellipse x="60" y="60" width="330" height="330"><Stroke color="$LINES" thickness="1"/></Ellipse>
-        <Ellipse x="105" y="105" width="240" height="240"><Stroke color="$LINES" thickness="1.5"/></Ellipse>
+$(RingEllipse $R_OUTER_LINE 1.5)
+$(RingEllipse $R_MIDDLE_LINE 1)
+$(RingEllipse $R_INNER_LINE 1.5)
 $($spokes.ToString().TrimEnd())
 $($ticks.ToString().TrimEnd())
       </PartDraw>
     </Group>
 
-    <!-- Highlight sector behind the key the hour hand points at (optional) -->
+    <!-- Highlight sector behind the outer label the hour hand points at (optional) -->
     <BooleanConfiguration id="highlightKey">
       <BooleanOption id="TRUE">
         <Group x="0" y="0" width="450" height="450" name="key_highlight">
           <PartDraw x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" alpha="70">
-            <Arc centerX="225" centerY="225" width="368" height="368" startAngle="-15" endAngle="15">
-              <Stroke color="$ACCENT" thickness="38" cap="BUTT"/>
+            <Arc centerX="225" centerY="225" width="$(F (2 * $HL_R))" height="$(F (2 * $HL_R))" startAngle="-15" endAngle="15">
+              <Stroke color="$ACCENT" thickness="$(F $HL_THICK)" cap="BUTT"/>
             </Arc>
             <Transform target="angle" value="round([HOUR_0_11] + [MINUTE] / 60) * 30"/>
           </PartDraw>
@@ -310,34 +387,24 @@ $($ticks.ToString().TrimEnd())
       </BooleanOption>
     </BooleanConfiguration>
 
-    <!-- Major keys (outer ring) -->
-    <Group x="0" y="0" width="450" height="450" name="major_keys">
-$($majorXml.ToString().TrimEnd())
-    </Group>
-
-    <!-- Inner ring: relative mode of each key. Cycles hourly by default; otherwise the chosen mode. -->
-    <BooleanConfiguration id="cycleHourly">
-      <BooleanOption id="TRUE">
-        <Group x="0" y="0" width="450" height="450" name="inner_cycle">
-$($cycleGroups.ToString().TrimEnd())
-        </Group>
-      </BooleanOption>
+    <!-- Key and mode rings: standard (keys outside) or swapped (modes outside) -->
+    <BooleanConfiguration id="swapRings">
       <BooleanOption id="FALSE">
-        <Group x="0" y="0" width="450" height="450" name="inner_fixed">
-    <ListConfiguration id="innerRing">
-$($modeOptions.ToString().TrimEnd())
-    </ListConfiguration>
-        </Group>
+$(RingSetXml "inner" "std")
+      </BooleanOption>
+      <BooleanOption id="TRUE">
+$(RingSetXml "outer" "swap")
       </BooleanOption>
     </BooleanConfiguration>
 
-    <!-- Date window at 3 o'clock -->
-    <Group x="0" y="0" width="450" height="450" name="date">
-      <PartDraw x="248" y="208" width="70" height="34">
-        <RoundRectangle x="1" y="1" width="68" height="32" cornerRadiusX="5" cornerRadiusY="5"><Stroke color="$LINES" thickness="1.5"/></RoundRectangle>
+    <!-- Date window at 3 o'clock; tap opens Calendar -->
+    <Group x="256" y="207" width="74" height="36" name="date">
+      <Launch target="CALENDAR"/>
+      <PartDraw x="0" y="0" width="74" height="36">
+        <RoundRectangle x="1" y="1" width="72" height="34" cornerRadiusX="5" cornerRadiusY="5"><Stroke color="$LINES" thickness="1.5"/></RoundRectangle>
       </PartDraw>
-      <PartText x="250" y="210" width="66" height="30">
-        <Text align="CENTER" verticalAlign="CENTER"><Font family="$FONT_REG" size="17" color="$MINOR"><Template><![CDATA[%s %d]]><Parameter expression="[DAY_OF_WEEK_S]"/><Parameter expression="[DAY]"/></Template></Font></Text>
+      <PartText x="2" y="2" width="70" height="32">
+        <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="$FONT_REG" size="19" minSize="12" color="$C_INNER"><Template><![CDATA[%s %d]]><Parameter expression="[DAY_OF_WEEK_S]"/><Parameter expression="[DAY]"/></Template></Font></Text>
       </PartText>
     </Group>
 
