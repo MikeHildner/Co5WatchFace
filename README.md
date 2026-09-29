@@ -33,10 +33,15 @@ Keys with two common spellings (D♭/C♯, G♭/F♯, B/C♭) show both, on both
 ## Settings (on-watch editor)
 
 - **Theme.** Six colour sets: Classic, Ivory, Gold, Ocean, Sage, Mono.
-- **Cycle modes hourly.** On by default. The inner ring changes at the top of
-  every hour, stepping through the modes in brightness order: Lydian,
-  Mixolydian, Dorian, Aeolian, Phrygian, Locrian, then round again. The mode
-  is derived from the hour of day (hour mod 6), so it needs no stored state.
+- **Cycle modes hourly.** On by default. The mode ring changes at the top of
+  every hour in a scrambled order. The day is split into four six-hour blocks
+  (midnight, 6 am, noon, 6 pm), and each block shows all six modes exactly
+  once, in one of twelve fixed shuffles picked per block from the date. A
+  given hour therefore shows different modes on different days, every mode
+  gets equal time, and the same mode never appears two hours in a row: when a
+  block would start with the mode that ended the previous block, its first two
+  hours swap. Everything is derived from the clock, so the face needs no
+  stored state.
 - **Inner ring.** Used when cycling is off: Aeolian (default), Dorian,
   Phrygian, Lydian, Mixolydian, Locrian, or None. Modes with a minor third are
   written in lowercase, Lydian and Mixolydian in uppercase. Whichever mode is
@@ -161,6 +166,8 @@ Tips learned on a Galaxy Watch9:
   updates live, which is why the hourly cycle is gated by a boolean setting
   rather than being an option of the Inner ring list. The Wear OS emulator
   does not show this difference.
+- Galaxy Watch quirk: `fract()` keeps the sign of negative numbers, so the
+  shuffle picker takes `abs()` first. Emulator and watch then agree exactly.
 - Wear OS remembers complication choices by slot position across reinstalls.
   To make new slot defaults apply on a watch that already had the face,
   uninstall first.

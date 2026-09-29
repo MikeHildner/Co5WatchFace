@@ -189,326 +189,254 @@
           <BooleanOption id="TRUE">
             <Group x="0" y="0" width="450" height="450" name="cycle_std">
         <Group x="0" y="0" width="450" height="450" name="modes_lydian_cycle_std">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 0 ? 255 : 0"/>
       <PartText x="182" y="72" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">F</Font></Text>
       </PartText>
       <PartText x="250" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">B<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="301" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">E<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="319" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">A<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="301" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">D<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="250" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">G<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/F<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="182" y="346" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">C<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/B</Font></Text>
       </PartText>
       <PartText x="114" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">E/F<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">A</Font></Text>
       </PartText>
       <PartText x="45" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">D</Font></Text>
       </PartText>
       <PartText x="63" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">G</Font></Text>
       </PartText>
       <PartText x="113" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">C</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_lydian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_mixolydian_cycle_std">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 1 ? 255 : 0"/>
       <PartText x="182" y="72" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">G</Font></Text>
       </PartText>
       <PartText x="250" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">C</Font></Text>
       </PartText>
       <PartText x="301" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">F</Font></Text>
       </PartText>
       <PartText x="319" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">B<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="301" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">E<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="250" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">A<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/G<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="182" y="346" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">D<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/C<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="114" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">F<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/G<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">B</Font></Text>
       </PartText>
       <PartText x="45" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">E</Font></Text>
       </PartText>
       <PartText x="63" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">A</Font></Text>
       </PartText>
       <PartText x="113" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">D</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_mixolydian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_dorian_cycle_std">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 2 ? 255 : 0"/>
       <PartText x="182" y="72" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
       </PartText>
       <PartText x="250" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
       </PartText>
       <PartText x="301" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">c</Font></Text>
       </PartText>
       <PartText x="319" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">f</Font></Text>
       </PartText>
       <PartText x="301" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">b<InlineImage resource="acc_flat" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="250" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">e<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/d<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="182" y="346" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">a<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/g<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="114" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/d<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="45" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
       </PartText>
       <PartText x="63" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
       </PartText>
       <PartText x="113" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_dorian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_aeolian_cycle_std">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 3 ? 255 : 0"/>
       <PartText x="182" y="72" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
       </PartText>
       <PartText x="250" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
       </PartText>
       <PartText x="301" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
       </PartText>
       <PartText x="319" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">c</Font></Text>
       </PartText>
       <PartText x="301" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">f</Font></Text>
       </PartText>
       <PartText x="250" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/a<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="182" y="346" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">e<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/d<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="114" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">g<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/a<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="45" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
       </PartText>
       <PartText x="113" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_aeolian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_phrygian_cycle_std">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 4 ? 255 : 0"/>
       <PartText x="182" y="72" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
       </PartText>
       <PartText x="250" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
       </PartText>
       <PartText x="301" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
       </PartText>
       <PartText x="319" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
       </PartText>
       <PartText x="301" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">c</Font></Text>
       </PartText>
       <PartText x="250" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f/e<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="182" y="346" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">b<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/a<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="114" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">d<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/e<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">g<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="45" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="113" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_phrygian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_locrian_cycle_std">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 5 ? 255 : 0"/>
       <PartText x="182" y="72" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">b</Font></Text>
       </PartText>
       <PartText x="250" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">e</Font></Text>
       </PartText>
       <PartText x="301" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">a</Font></Text>
       </PartText>
       <PartText x="319" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">d</Font></Text>
       </PartText>
       <PartText x="301" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">g</Font></Text>
       </PartText>
       <PartText x="250" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">c/b<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="182" y="346" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">f/e<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="114" y="328" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="21" minSize="12" color="[CONFIGURATION.themeColor.1]">a<InlineImage resource="acc_sharp" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/>/b<InlineImage resource="acc_flat" width="6" height="16" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="278" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">d<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="45" y="209" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">g<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="63" y="140" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">c<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="113" y="90" width="86" height="32">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_italic" size="26" minSize="12" color="[CONFIGURATION.themeColor.1]">f<InlineImage resource="acc_sharp" width="7" height="20" color="[CONFIGURATION.themeColor.1]"/></Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_locrian</Font></TextCircular>
       </PartText>
         </Group>
@@ -828,326 +756,254 @@
           <BooleanOption id="TRUE">
             <Group x="0" y="0" width="450" height="450" name="cycle_swap">
         <Group x="0" y="0" width="450" height="450" name="modes_lydian_cycle_swap">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 0 ? 255 : 0"/>
       <PartText x="175" y="22" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">F</Font></Text>
       </PartText>
       <PartText x="266" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">B<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="333" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">E<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="358" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">A<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="333" y="296" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">D<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="266" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">G<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/F<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="175" y="388" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">C<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/B</Font></Text>
       </PartText>
       <PartText x="84" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">E/F<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="297" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">A</Font></Text>
       </PartText>
       <PartText x="-8" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">D</Font></Text>
       </PartText>
       <PartText x="17" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">G</Font></Text>
       </PartText>
       <PartText x="83" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">C</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 0), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_lydian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_mixolydian_cycle_swap">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 1 ? 255 : 0"/>
       <PartText x="175" y="22" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">G</Font></Text>
       </PartText>
       <PartText x="266" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">C</Font></Text>
       </PartText>
       <PartText x="333" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">F</Font></Text>
       </PartText>
       <PartText x="358" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">B<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="333" y="296" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">E<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="266" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">A<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/G<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="175" y="388" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">D<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/C<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="84" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">F<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/G<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="297" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">B</Font></Text>
       </PartText>
       <PartText x="-8" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">E</Font></Text>
       </PartText>
       <PartText x="17" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">A</Font></Text>
       </PartText>
       <PartText x="83" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">D</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 1), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_mixolydian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_dorian_cycle_swap">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 2 ? 255 : 0"/>
       <PartText x="175" y="22" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">d</Font></Text>
       </PartText>
       <PartText x="266" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">g</Font></Text>
       </PartText>
       <PartText x="333" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">c</Font></Text>
       </PartText>
       <PartText x="358" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">f</Font></Text>
       </PartText>
       <PartText x="333" y="296" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">b<InlineImage resource="acc_flat" width="10" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="266" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">e<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/d<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="175" y="388" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">a<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/g<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="84" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">c<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/d<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="297" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">f<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="-8" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">b</Font></Text>
       </PartText>
       <PartText x="17" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">e</Font></Text>
       </PartText>
       <PartText x="83" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">a</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 2), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_dorian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_aeolian_cycle_swap">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 3 ? 255 : 0"/>
       <PartText x="175" y="22" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">a</Font></Text>
       </PartText>
       <PartText x="266" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">d</Font></Text>
       </PartText>
       <PartText x="333" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">g</Font></Text>
       </PartText>
       <PartText x="358" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">c</Font></Text>
       </PartText>
       <PartText x="333" y="296" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">f</Font></Text>
       </PartText>
       <PartText x="266" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">b<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/a<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="175" y="388" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">e<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/d<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="84" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">g<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/a<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="297" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">c<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="-8" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">f<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">b</Font></Text>
       </PartText>
       <PartText x="83" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">e</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 3), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_aeolian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_phrygian_cycle_swap">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 4 ? 255 : 0"/>
       <PartText x="175" y="22" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">e</Font></Text>
       </PartText>
       <PartText x="266" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">a</Font></Text>
       </PartText>
       <PartText x="333" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">d</Font></Text>
       </PartText>
       <PartText x="358" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">g</Font></Text>
       </PartText>
       <PartText x="333" y="296" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">c</Font></Text>
       </PartText>
       <PartText x="266" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">f/e<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="175" y="388" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">b<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/a<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="84" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">d<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/e<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="297" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">g<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="-8" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">c<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">f<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="83" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">b</Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 4), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_phrygian</Font></TextCircular>
       </PartText>
         </Group>
         <Group x="0" y="0" width="450" height="450" name="modes_locrian_cycle_swap">
+          <Transform target="alpha" value="(floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / pow(10, 5 - (((floor((floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin(([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) / 100000) % 10) == ((floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 0 ? 134205 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 1 ? 342510 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 2 ? 425130 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 3 ? 532401 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 4 ? 403521 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 5 ? 305124 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 6 ? 201453 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 7 ? 351240 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 8 ? 420135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 9 ? 240135 : (floor(fract(abs(sin((([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6)) - 1) * 12.9898) * 43758.5453)) * 12) == 10 ? 201354 : 345210))))))))))) % 10)) ? (([HOUR_0_23] % 6) == 0 ? 1 : (([HOUR_0_23] % 6) == 1 ? 0 : ([HOUR_0_23] % 6))) : ([HOUR_0_23] % 6)))) % 10) == 5 ? 255 : 0"/>
       <PartText x="175" y="22" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">b</Font></Text>
       </PartText>
       <PartText x="266" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">e</Font></Text>
       </PartText>
       <PartText x="333" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">a</Font></Text>
       </PartText>
       <PartText x="358" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">d</Font></Text>
       </PartText>
       <PartText x="333" y="296" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">g</Font></Text>
       </PartText>
       <PartText x="266" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">c/b<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="175" y="388" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">f/e<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="84" y="363" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="27" minSize="12" color="[CONFIGURATION.themeColor.0]">a<InlineImage resource="acc_sharp" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/>/b<InlineImage resource="acc_flat" width="8" height="21" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="297" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">d<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="-8" y="205" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">g<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="17" y="114" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">c<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="83" y="47" width="100" height="40">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <Text align="CENTER" verticalAlign="CENTER" isAutoSize="TRUE"><Font family="libre_baskerville_bold" size="33" minSize="12" color="[CONFIGURATION.themeColor.0]">f<InlineImage resource="acc_sharp" width="9" height="26" color="[CONFIGURATION.themeColor.0]"/></Font></Text>
       </PartText>
       <PartText x="0" y="0" width="450" height="450">
-        <Transform target="alpha" value="255 * (1 - clamp(abs(([HOUR_0_23] % 6) - 5), 0, 1))"/>
         <TextCircular centerX="225" centerY="225" width="204" height="204" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER"><Font family="libre_baskerville_italic" size="19" color="[CONFIGURATION.themeColor.1]">mode_locrian</Font></TextCircular>
       </PartText>
         </Group>

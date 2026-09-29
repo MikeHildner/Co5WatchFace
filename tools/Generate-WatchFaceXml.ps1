@@ -75,6 +75,36 @@ $MODES = @(
 # Hourly cycle, brightness order (each step adds a flat): hour mod 6 picks the mode.
 $CYCLE_ORDER = @("lydian", "mixolydian", "dorian", "aeolian", "phrygian", "locrian")
 
+# Scrambled hourly order. The day splits into four 6-hour blocks (00-06, 06-12, 12-18, 18-24);
+# each block shows every mode exactly once, in one of $PERM_COUNT fixed shuffles. Which shuffle
+# is picked pseudo-randomly per block from the day of the year, so a given hour does not always
+# show the same mode. The face has no state, so everything is derived from the clock.
+$PERM_COUNT = 12
+$rng = New-Object System.Random 20260929          # fixed seed: the shuffles are stable across rebuilds
+$PERMS = New-Object System.Collections.Generic.List[string]
+while ($PERMS.Count -lt $PERM_COUNT) {
+  $p = (@(0..5) | Sort-Object { $rng.Next() }) -join ""
+  if (-not $PERMS.Contains($p)) { $PERMS.Add($p) }
+}
+# Each shuffle is encoded as a 6-digit number whose n-th digit is the mode for hour n of the block.
+function PermExpr([string]$block) {
+  # abs() before fract(): on the Galaxy Watch fract() keeps the sign of negative inputs, which
+  # made roughly half the blocks fall through to the last shuffle.
+  $sel = "floor(fract(abs(sin($block * 12.9898) * 43758.5453)) * $PERM_COUNT)"
+  $e = "$([int]$PERMS[$PERM_COUNT - 1])"
+  for ($i = $PERM_COUNT - 2; $i -ge 0; $i--) { $e = "($sel == $i ? $([int]$PERMS[$i]) : $e)" }
+  return $e
+}
+$BLOCK      = "([DAY_OF_YEAR] * 4 + floor([HOUR_0_23] / 6))"
+$PERM_CUR   = PermExpr $BLOCK
+$PERM_PREV  = PermExpr "($BLOCK - 1)"
+$POS        = "([HOUR_0_23] % 6)"
+# No repeats across a block boundary: if this block's first mode equals the previous block's last,
+# swap this block's first two hours. A block's last hour is never altered, so the check never cascades.
+$CONFLICT   = "((floor($PERM_CUR / 100000) % 10) == ($PERM_PREV % 10))"
+$POS_FIXED  = "($CONFLICT ? ($POS == 0 ? 1 : ($POS == 1 ? 0 : $POS)) : $POS)"
+$MODE_INDEX = "(floor($PERM_CUR / pow(10, 5 - $POS_FIXED)) % 10)"
+
 function ModeTonic([int]$letter, [int]$acc, [int]$degree) {
   $L  = ($letter + $degree) % 7
   $pc = (($NATURAL[$letter] + $acc + $INTERVALS[$degree]) % 12 + 12) % 12
@@ -154,10 +184,11 @@ function ModeNameXml([string]$modeId, [string]$partExtra = "") {
 "@
 }
 
-function ModeGroupXml($mode, [string]$placement, [string]$name, [string]$partExtra = "") {
+function ModeGroupXml($mode, [string]$placement, [string]$name, [string]$partExtra = "", [string]$groupExtra = "") {
   $family = if ($placement -eq "outer") { $FONT_BOLD } else { $FONT_ITALIC }
+  $groupLine = if ($groupExtra) { "`n$groupExtra" } else { "" }
   return @"
-        <Group x="0" y="0" width="450" height="450" name="$name">
+        <Group x="0" y="0" width="450" height="450" name="$name">$groupLine
 $(RingLabelsXml (ModeSpellings $mode) $placement $family $mode.lower $partExtra)$(ModeNameXml $mode.id $partExtra)        </Group>
 "@
 }
@@ -179,8 +210,8 @@ function RingSetXml([string]$modesAt, [string]$tag) {
   $cycle = New-Object System.Text.StringBuilder
   for ($k = 0; $k -lt $CYCLE_ORDER.Count; $k++) {
     $m = $MODES | Where-Object { $_.id -eq $CYCLE_ORDER[$k] }
-    $alpha = "        <Transform target=""alpha"" value=""255 * (1 - clamp(abs(([HOUR_0_23] % 6) - $k), 0, 1))""/>"
-    [void]$cycle.AppendLine((ModeGroupXml $m $modesAt "modes_$($m.id)_cycle_$tag" $alpha))
+    $alpha = "          <Transform target=""alpha"" value=""$MODE_INDEX == $k ? 255 : 0""/>"
+    [void]$cycle.AppendLine((ModeGroupXml $m $modesAt "modes_$($m.id)_cycle_$tag" "" $alpha))
   }
   $fixed = New-Object System.Text.StringBuilder
   foreach ($m in $MODES) {
